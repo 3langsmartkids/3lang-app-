@@ -1608,6 +1608,17 @@ function openAR(){
   const ctxErr=insecureContextReason();
   if(ctxErr){ setCamStatus(ctxErr, true); return; }
 
+  // ตรวจ In-App Browser (LINE / Facebook / Instagram) — กล้องถูกบล็อกใน WebView เหล่านี้
+  const ua=navigator.userAgent||'';
+  if(/FBAN|FBAV|FB_IAB|Line\/|Instagram|Musical\.ly|TikTok/.test(ua)){
+    setCamStatus('❌ เบราว์เซอร์ใน App นี้ใช้กล้องไม่ได้ — กรุณาเปิดลิงก์ใน Safari (iOS) หรือ Chrome (Android) แทนครับ', true);
+    return;
+  }
+  // ตรวจ mediaDevices support
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    setCamStatus('❌ Browser นี้ไม่รองรับกล้อง — ลองอัปเดต Browser หรือแตะปุ่มคำตอบเล่นต่อได้เลย', true);
+    return;
+  }
   document.getElementById('cam-st').textContent='⏳ กำลังโหลด AR...';
   document.getElementById('cam-st').classList.remove('warn');
   if(!mpLoaded){
@@ -1639,8 +1650,10 @@ function setCamStatus(msg, isWarn){
 
 function loadScript(src, onok, onerr){
   const s=document.createElement('script');
+  const timer=setTimeout(()=>{ s.onload=s.onerror=null; onerr(new Error('timeout')); }, 8000);
   s.src=src; s.crossOrigin='anonymous';
-  s.onload=onok; s.onerror=onerr;
+  s.onload=()=>{ clearTimeout(timer); onok(); };
+  s.onerror=()=>{ clearTimeout(timer); onerr(); };
   document.head.appendChild(s);
 }
 function arLoadErr(){ setCamStatus('❌ โหลดสคริปต์ AR ไม่ได้ (เน็ตหลุด/บล็อก CDN) — ใช้ปุ่มแทน', true); }
@@ -1655,7 +1668,9 @@ function startAR(){
     setCamStatus('❌ เบราว์เซอร์รุ่นนี้ไม่รองรับกล้อง — ลองอัปเดตเบราว์เซอร์ หรือแตะปุ่มคำตอบแทน', true);
     return;
   }
-  navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false})
+  const tryCamera = (constraints) => navigator.mediaDevices.getUserMedia(constraints);
+  tryCamera({video:{facingMode:{ideal:'user'}},audio:false})
+    .catch(()=>tryCamera({video:true,audio:false}))
     .then(stream=>{
       const vid=document.getElementById('webcam');
       vid.srcObject=stream; vid.play();
