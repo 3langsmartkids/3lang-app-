@@ -40,35 +40,26 @@
   --bg:#050A14;--bgc:#080F1E;--bgl:rgba(0,207,255,0.18);--gl:rgba(0,207,255,0.05);
   --tp:#E8F4FF;--ts:#7AAABE;--tm:#3A5A70;
   --tr:all .22s cubic-bezier(.4,0,.2,1);
-  /* safe area for notch phones */
   --sat: env(safe-area-inset-top, 0px);
   --sab: env(safe-area-inset-bottom, 0px);
   --sal: env(safe-area-inset-left, 0px);
   --sar: env(safe-area-inset-right, 0px);
 }
-
-/* ── LIGHT MODE ── */
 [data-theme="light"]{
   --nb:#0070CC;--ng:#00A825;--ny:#C8A000;--nr:#D0002A;--np:#C020C8;--no:#C05000;
   --bg:#F0F6FF;--bgc:#FFFFFF;--bgl:rgba(0,112,204,0.2);--gl:rgba(0,112,204,0.08);
   --tp:#0A1628;--ts:#2A5080;--tm:#7090B0;
 }
-
-/* ── ACCESSIBILITY: respect reduced-motion preference ── */
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{
     animation-duration:.001ms!important;animation-iteration-count:1!important;
     transition-duration:.001ms!important;scroll-behavior:auto!important;
   }
 }
-
-/* ── ACCESSIBILITY: visible keyboard focus ── */
 button:focus-visible{
   outline:2px solid var(--nb);outline-offset:3px;
   box-shadow:0 0 10px var(--nb);
 }
-
-/* ── RESET ── */
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{height:100%;height:-webkit-fill-available}
 body{
@@ -76,7 +67,6 @@ body{
   font-family:'Kanit',sans-serif;
   background:var(--bg);color:var(--tp);
   overflow:hidden;
-  /* prevent rubber-band scroll on iOS */
   overscroll-behavior:none;
   touch-action:manipulation;
   transition:background .3s ease,color .3s ease;
@@ -87,8 +77,6 @@ body::before{
                    linear-gradient(90deg,var(--gl) 1px,transparent 1px);
   background-size:40px 40px;pointer-events:none;z-index:0;
 }
-
-/* ── SCREEN SYSTEM ── */
 .screen{
   display:none;
   position:fixed;inset:0;
@@ -103,8 +91,6 @@ body::before{
   padding-right:var(--sar);
 }
 .screen.active{display:flex}
-
-/* ══ START ══ */
 #s-start{gap:1.2rem;text-align:center;padding:2rem 1.5rem}
 .badge{
   display:inline-block;
@@ -121,19 +107,16 @@ body::before{
 }
 .sub-ttl{font-family:'Orbitron',sans-serif;font-size:clamp(.6rem,2.5vw,.9rem);color:var(--ts);letter-spacing:.18em}
 .brand{font-size:clamp(11px,3vw,13px);color:var(--tm);letter-spacing:.06em}
-/* BIG tap target for mobile */
 .btn-main{
   font-family:'Orbitron',sans-serif;font-size:clamp(13px,4vw,16px);font-weight:700;letter-spacing:.12em;
   padding:clamp(12px,3vw,16px) clamp(32px,8vw,56px);
   border:2px solid var(--ng);border-radius:99px;
   background:rgba(57,255,20,.08);color:var(--ng);cursor:pointer;
   transition:var(--tr);text-shadow:0 0 8px var(--ng);
-  min-height:52px; /* minimum tap target */
+  min-height:52px;
 }
 .btn-main:active{background:var(--ng);color:#000;transform:scale(.97)}
 .hint{font-size:clamp(11px,2.5vw,13px);color:var(--tm)}
-
-/* ══ UTILITY TOGGLES (theme / sound) ══ */
 .util-row{display:flex;gap:.6rem;justify-content:center}
 .util-btn{
   width:38px;height:38px;border-radius:50%;
@@ -143,8 +126,6 @@ body::before{
   touch-action:manipulation;flex-shrink:0;
 }
 .util-btn:active{border-color:var(--nb);box-shadow:0 0 10px var(--nb);transform:scale(.93)}
-
-/* ══ G-CHIP — persistent XP/Level/Coin status ══ */
 .g-chip{
   display:flex;align-items:center;gap:.6rem;
   background:var(--bgc);border:1px solid var(--bgl);border-radius:99px;
@@ -168,8 +149,6 @@ body::before{
   background:rgba(255,107,248,.07);cursor:pointer;transition:var(--tr);min-height:36px;
 }
 .g-shop-btn:active{background:var(--np);color:#000}
-
-/* ══ SHOP MODAL ══ */
 .modal-overlay{
   position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.6);
   display:none;align-items:center;justify-content:center;padding:1.2rem;
@@ -202,16 +181,12 @@ body::before{
   padding:9px 26px;border-radius:99px;border:1px solid var(--bgl);color:var(--ts);
   background:transparent;cursor:pointer;min-height:40px;
 }
-
-/* ══ SELECT ══ */
 #s-select{
   justify-content:flex-start;
   padding:clamp(.8rem,3vw,1.8rem) clamp(.8rem,3vw,1.5rem);
   gap:1rem;
 }
 .sel-ttl{font-family:'Orbitron',sans-serif;font-size:clamp(.85rem,3vw,1.4rem);font-weight:700;color:var(--nb);text-shadow:0 0 10px var(--nb);letter-spacing:.08em;text-align:center;flex-shrink:0}
-
-/* 2-col on small phones, 4-col on tablet */
 .fam-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -219,7 +194,6 @@ body::before{
   flex-shrink:0;
 }
 @media(min-width:600px){.fam-grid{grid-template-columns:repeat(4,1fr)}}
-
 .fam-card{
   background:var(--bgc);border:1.5px solid var(--bgl);border-radius:14px;
   padding:1rem .8rem .9rem;text-align:center;cursor:pointer;
@@ -231,7 +205,6 @@ body::before{
 .fc-name{font-family:'Orbitron',sans-serif;font-size:clamp(9px,2vw,10px);font-weight:700;letter-spacing:.1em;margin-bottom:.3rem}
 .fc-desc{font-size:clamp(9px,2vw,10px);color:var(--ts);line-height:1.5;margin-bottom:.7rem}
 .fc-best{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--tm);letter-spacing:.06em;margin-bottom:.5rem;min-height:11px}
-/* big tap target */
 .btn-start{
   font-family:'Orbitron',sans-serif;font-size:clamp(10px,2.5vw,11px);font-weight:700;letter-spacing:.08em;
   padding:9px 0;width:100%;border-radius:99px;border:1.5px solid;background:transparent;cursor:pointer;
@@ -262,8 +235,6 @@ body::before{
   background:var(--ny);color:#000;border-radius:99px;
   font-size:10px;font-weight:900;padding:2px 8px;min-width:22px;text-align:center;
 }
-
-/* ══ PROFILE PICKER ══ */
 .profile-input{
   flex:1;font-family:'Kanit',sans-serif;font-size:14px;
   padding:10px 16px;border-radius:99px;border:1.5px solid var(--bgl);
@@ -288,20 +259,11 @@ body::before{
   padding:5px 12px;border-radius:99px;border:1px solid var(--bgl);color:var(--ts);
   background:transparent;cursor:pointer;min-height:30px;
 }
-
-/* ══ GAME SCREEN ══ */
 #s-game{justify-content:flex-start;padding:0;overflow:hidden}
-
-/* AR video — behind UI */
 #vid-layer{position:fixed;inset:0;z-index:0;background:var(--bg);overflow:hidden}
 #webcam{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1);opacity:0;transition:opacity .4s}
 #webcam.live{opacity:1}
 #hand-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-
-/* ══ GAMEPLAY BACKDROP — grid + drifting math symbols ══
-   Sits behind the webcam layer (visible whenever the AR camera is off,
-   which is the default/most common state). Purely decorative —
-   aria-hidden, pointer-events:none, never competes with real content. */
 .math-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
 .math-bg .mb-vignette{
   position:absolute;inset:0;
@@ -325,8 +287,6 @@ body::before{
   opacity:.55;animation:pp 2.6s ease-in-out infinite;
 }
 @keyframes mbDrift{0%,100%{transform:translateY(0) rotate(var(--mbr,0deg))}50%{transform:translateY(-9px) rotate(var(--mbr,0deg))}}
-
-/* HUD — glass: lighter fill, stronger blur so it reads as frosted, not solid */
 #hud{
   position:relative;z-index:10;width:100%;
   display:flex;align-items:center;justify-content:space-between;
@@ -342,8 +302,6 @@ body::before{
 .pb-f{height:100%;background:var(--nb);box-shadow:0 0 6px var(--nb);border-radius:2px;transition:width .4s ease}
 .sc-lbl{font-family:'Share Tech Mono',monospace;font-size:clamp(9px,2vw,10px);color:var(--tm);letter-spacing:.08em;text-align:right}
 .sc-val{font-family:'Orbitron',sans-serif;font-size:clamp(1.1rem,4vw,1.4rem);font-weight:900;color:var(--ny);text-shadow:0 0 10px var(--ny);text-align:right}
-
-/* Question — bigger + glass background so it's readable from a few steps back */
 #q-box{
   position:relative;z-index:10;width:100%;text-align:center;
   padding:clamp(.6rem,2.6vw,.9rem) 1.2rem;
@@ -353,15 +311,6 @@ body::before{
 .q-instr{font-size:clamp(11px,2.8vw,13px);color:var(--ts);margin-bottom:.2rem}
 .q-expr{font-family:'Orbitron',sans-serif;font-size:clamp(1.9rem,11vw,4.2rem);font-weight:900;letter-spacing:.03em;line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.5)}
 .q-sub{font-family:'Share Tech Mono',monospace;font-size:clamp(10px,2.4vw,12px);color:var(--tm);margin-top:.18rem}
-
-/* ══ MATH NOTATION — semantic stacked fraction (vinculum) ══
-   Built from numerator/bar/denominator instead of precomposed Unicode
-   glyphs (½ ⅓ ¼ ⅕). Those glyphs are font-dependent (Orbitron has no
-   guaranteed coverage), capped at a handful of values, and render
-   inconsistently on <canvas>. This component scales with em, works for
-   any n/d, and renders identically everywhere it's used.
-   Used for FOCAL displays (main equation, family card) where the
-   fraction is a primary element worth two lines of height. */
 .frac{
   display:inline-flex;flex-direction:column;align-items:center;
   vertical-align:middle;line-height:1;margin:0 .08em;
@@ -373,17 +322,10 @@ body::before{
   display:block;width:100%;height:.05em;min-height:2px;
   background:currentColor;margin:.08em 0;border-radius:1px;
 }
-
-/* Compact single-line variant — for tight inline contexts like the HUD
-   badge, where a 2-line stacked fraction would blow out the row height
-   and look out of proportion next to small caption text. Sits on one
-   baseline like ordinary text. */
 .frac-inline{display:inline-block;white-space:nowrap}
 .frac-inline .fi-n,.frac-inline .fi-d{font-size:.8em}
 .frac-inline .fi-n{vertical-align:.1em}
 .frac-inline .fi-slash{font-size:.85em;margin:0 .01em;opacity:.82}
-
-/* ★ ANSWER BUTTONS — DOM, always tappable ★ */
 #ans-frame{
   position:relative;z-index:10;flex:1;width:100%;
 }
@@ -392,8 +334,6 @@ body::before{
   display:flex;align-items:center;justify-content:center;
   padding:1rem .8rem;gap:clamp(.6rem,3vw,1.2rem);flex-wrap:wrap;
 }
-
-/* ══ SCI-FI VIEWPORT FRAME — premium AR HUD corners ══ */
 .scan-corner{
   position:absolute;width:24px;height:24px;pointer-events:none;
   opacity:.65;animation:scanPulse 2.6s ease-in-out infinite;
@@ -403,8 +343,6 @@ body::before{
 .scan-corner.bl{bottom:12px;left:12px;border-bottom:2px solid var(--nb);border-left:2px solid var(--nb);border-radius:0 0 0 5px}
 .scan-corner.br{bottom:12px;right:12px;border-bottom:2px solid var(--nb);border-right:2px solid var(--nb);border-radius:0 0 5px 0}
 @keyframes scanPulse{0%,100%{box-shadow:0 0 6px var(--nb);opacity:.4}50%{box-shadow:0 0 16px var(--nb);opacity:.85}}
-
-/* faint sci-fi scanline sweep across the AR viewport */
 .scan-sweep{
   position:absolute;left:8%;right:8%;height:2px;top:0;
   background:linear-gradient(90deg,transparent,var(--nb),transparent);
@@ -412,8 +350,6 @@ body::before{
   animation:sweepY 3.4s ease-in-out infinite;
 }
 @keyframes sweepY{0%{top:6%;opacity:0}10%{opacity:.55}50%{top:92%;opacity:.55}60%{opacity:0}100%{top:92%;opacity:0}}
-
-/* brand watermark — sits inside the AR viewport, never blocks taps */
 .brand-mark{
   position:absolute;left:50%;bottom:10px;transform:translateX(-50%);
   text-align:center;pointer-events:none;z-index:1;
@@ -432,7 +368,6 @@ body::before{
 }
 .ans-btn{
   font-family:'Orbitron',sans-serif;
-  /* responsive circle: scales on phone */
   width:clamp(80px,22vw,130px);
   height:clamp(80px,22vw,130px);
   font-size:clamp(1rem,5vw,2rem);
@@ -446,11 +381,9 @@ body::before{
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 0 16px rgba(0,207,255,.1),inset 0 0 16px rgba(0,207,255,.04);
-  /* big tap area */
   -webkit-user-select:none;user-select:none;
   touch-action:manipulation;
 }
-/* hover only on devices that support it */
 @media(hover:hover){
   .ans-btn:hover{transform:scale(1.08);border-color:var(--nb);box-shadow:0 0 26px rgba(0,207,255,.4);color:var(--nb);text-shadow:0 0 12px var(--nb)}
 }
@@ -467,8 +400,6 @@ body::before{
 }
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 .ans-btn:disabled{cursor:default;opacity:.6}
-
-/* Feedback */
 #feedback{
   position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
   z-index:50;font-family:'Orbitron',sans-serif;
@@ -478,8 +409,6 @@ body::before{
 }
 #feedback.show-ok{opacity:1;color:var(--ng);text-shadow:0 0 26px var(--ng),0 0 52px var(--ng)}
 #feedback.show-no{opacity:1;color:var(--nr);text-shadow:0 0 22px var(--nr)}
-
-/* Streak */
 #streak{
   position:fixed;top:calc(var(--sat) + 68px);right:1rem;
   z-index:20;font-family:'Orbitron',sans-serif;font-size:clamp(9px,2.5vw,11px);
@@ -489,8 +418,6 @@ body::before{
 }
 #streak.show{opacity:1;animation:glowo 1.2s infinite}
 @keyframes glowo{0%,100%{box-shadow:0 0 8px rgba(255,119,0,.2)}50%{box-shadow:0 0 18px rgba(255,119,0,.6)}}
-
-/* AR bar */
 #ar-bar{
   position:relative;z-index:10;width:100%;
   display:flex;align-items:center;justify-content:space-between;
@@ -509,8 +436,6 @@ body::before{
   min-height:36px;min-width:100px;touch-action:manipulation;
 }
 #ar-toggle:active{border-color:var(--nb);color:var(--nb)}
-
-/* ══ RESULT ══ */
 #s-result{gap:1.2rem;padding:2rem 1.5rem;text-align:center}
 .res-box{
   background:rgba(8,15,30,.93);border:1px solid var(--bgl);border-radius:18px;
@@ -539,11 +464,7 @@ body::before{
 .btn-menu:active{background:var(--nb);color:#000}
 .btn-share{border-color:var(--ny);color:var(--ny);background:rgba(255,230,0,.06)}
 .btn-share:active{background:var(--ny);color:#000}
-
-/* Particles */
 #p-canvas{position:fixed;inset:0;pointer-events:none;z-index:40}
-
-/* ══ PHASE 3 DETECTIVE MODE ══ */
 #s-detective{gap:.8rem;padding:1rem 1rem;overflow-y:auto}
 .det-screen-title{font-family:'Orbitron',sans-serif;font-size:clamp(.9rem,3vw,1.1rem);font-weight:900;color:var(--nb);letter-spacing:.1em;text-align:center;margin-bottom:.2rem}
 .det-screen-sub{font-size:.78rem;color:var(--tm);text-align:center;margin-bottom:.4rem;letter-spacing:.04em}
@@ -566,8 +487,6 @@ body::before{
   cursor:pointer;flex:1;min-height:40px;touch-action:manipulation;transition:var(--tr);
 }
 .det-lv-btn:active{opacity:.7}
-
-/* Detective game screen */
 #s-det-game{gap:.6rem;padding:.8rem .8rem}
 .det-hud{display:flex;justify-content:space-between;align-items:center;width:100%;padding:6px 0}
 #det-hud-label{font-family:'Orbitron',sans-serif;font-size:clamp(.7rem,2.5vw,.85rem);font-weight:900;letter-spacing:.08em}
@@ -599,8 +518,6 @@ body::before{
 #det-streak{font-family:'Orbitron',sans-serif;font-size:.8rem;font-weight:900;color:#FF6BF8;text-align:center;min-height:20px;transition:var(--tr)}
 #det-streak.show{animation:pp .8s infinite}
 #det-feedback{font-family:'Orbitron',sans-serif;font-size:clamp(.85rem,3vw,1rem);font-weight:900;text-align:center;pointer-events:none;min-height:24px}
-
-/* Batch mission (Phase 3.5) */
 .det-batch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
 .det-batch-btn{
   font-family:'Orbitron',sans-serif;font-size:.75rem;font-weight:700;
@@ -614,8 +531,6 @@ body::before{
 .det-batch-btn.det-batch-miss{background:rgba(255,230,0,.1);border-color:#FFE600;color:#FFE600}
 .det-frac-inline{font-size:.85rem;font-family:'Share Tech Mono',monospace}
 .det-frac-slash{margin:0 1px;font-size:.75rem}
-
-/* Detective result screen */
 #s-det-result{gap:.8rem;padding:1.5rem 1.2rem;text-align:center}
 .det-res-box{background:rgba(8,15,30,.93);border:1px solid var(--bgl);border-radius:18px;padding:1.5rem 1.2rem;width:100%;max-width:380px;margin:0 auto}
 #det-res-title{font-family:'Orbitron',sans-serif;font-size:clamp(1rem,4vw,1.4rem);font-weight:900;margin-bottom:8px}
@@ -674,6 +589,8 @@ body::before{
   <div class="util-row">
     <button class="util-btn theme-btn" onclick="toggleTheme()" title="สลับธีม" aria-label="สลับธีมสว่าง/มืด">🌙</button>
     <button class="util-btn sound-btn" onclick="toggleSound()" title="เสียง" aria-label="เปิด/ปิดเสียง">🔊</button>
+    <button class="util-btn" onclick="showAchievementList()" title="ความสำเร็จ" aria-label="แสดงความสำเร็จ">🏆</button>
+    <button class="util-btn" onclick="showDailyQuests()" title="ภารกิจประจำวัน" aria-label="แสดงภารกิจประจำวัน">📋</button>
   </div>
 </div>
 
@@ -692,9 +609,14 @@ body::before{
       <button class="lv-btn"     id="lb1" onclick="pickLv(1)">LV 2</button>
       <button class="lv-btn"     id="lb2" onclick="pickLv(2)">LV 3</button>
     </div>
-    <button id="review-btn" class="btn-review" onclick="startReview()" style="display:none">
-      📚 ทบทวนข้อผิด <span id="review-badge" class="review-badge">0</span>
-    </button>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center">
+      <button class="btn-review" onclick="startSmartReview()" style="border-color:#FF6BF8;color:#FF6BF8">
+        🧠 ทบทวน SRS <span class="review-badge" id="srs-badge">0</span>
+      </button>
+      <button class="btn-review" onclick="startReview()" id="review-btn" style="display:none">
+        📚 ทบทวนข้อผิด <span class="review-badge" id="review-badge">0</span>
+      </button>
+    </div>
     <button class="btn-back" onclick="goStart()">◀ BACK</button>
   </div>
 </div>
@@ -737,7 +659,6 @@ body::before{
     <div class="q-expr"  id="q-expr"></div>
     <div class="q-sub"   id="q-sub"></div>
   </div>
-  <!-- ★ DOM answer buttons — tap anywhere on phone ★ -->
   <div id="ans-frame">
     <span class="scan-corner tl"></span>
     <span class="scan-corner tr"></span>
@@ -858,13 +779,29 @@ const FAM = [
     th:'หนึ่งในห้า', en:'one fifth', zh:'五分之一',
     lv:[[5,10,15,20,25,30,35,40,45,50],
         [55,60,65,70,75,80,85,90,95,100],
-        [50,100,105,110,115,120,125,150,200,250]]}
+        [50,100,105,110,115,120,125,150,200,250]]},
+  { sym:'⅙', name:'ครอบครัว ⅙', n:1, d:6, color:'#FF8844', colorLight:'#CC5522',
+    instr:'มองเลขล่าง "รู้ทันที" — หนึ่งในหกคือเท่าไหร่? ✈️',
+    th:'หนึ่งในหก', en:'one sixth', zh:'六分之一',
+    lv:[[6,12,18,24,30,36,42,48,54,60],
+        [66,72,78,84,90,96,102,108,114,120],
+        [60,120,126,132,138,144,150,180,240,300]]},
+  { sym:'⅛', name:'ครอบครัว ⅛', n:1, d:8, color:'#AA66FF', colorLight:'#7733CC',
+    instr:'มองเลขล่าง "รู้ทันที" — หนึ่งในแปดคือเท่าไหร่? ✈️',
+    th:'หนึ่งในแปด', en:'one eighth', zh:'八分之一',
+    lv:[[8,16,24,32,40,48,56,64,72,80],
+        [88,96,104,112,120,128,136,144,152,160],
+        [80,160,168,176,184,192,200,240,320,400]]},
+  { sym:'⅗', name:'ครอบครัว ⅗', n:3, d:5, color:'#FF44AA', colorLight:'#CC1177',
+    instr:'สามในห้าคือเท่าไหร่? ✈️',
+    th:'สามในห้า', en:'three fifths', zh:'五分之三',
+    lv:[[5,10,15,20,25,30,35,40,45,50],
+        [55,60,65,70,75,80,85,90,95,100],
+        [50,100,150,200,250,300,350,400,450,500]]}
 ];
 
 // ═══════════════════════════════════════════════
 // PHASE 3 — DETECTIVE MODE DATA
-// ภารกิจ C–F: นักสืบเศษส่วน (Equivalent Fraction identifier)
-// Phase 3.5: กับดักนักบิน (trap decoys mixed in)
 // ═══════════════════════════════════════════════
 const DET_MISSIONS = [
   {
@@ -872,12 +809,10 @@ const DET_MISSIONS = [
     label:'ครอบครัว ½', emoji:'🕵️',
     goal:'หาให้เจอว่าใครเป็นพวกเดียวกับ ½',
     hint:'เลขล่าง ÷ เลขบน = 2 เสมอ',
-    // 20 true members of ½ family
     members:[{n:2,d:4},{n:3,d:6},{n:4,d:8},{n:5,d:10},{n:6,d:12},
              {n:7,d:14},{n:8,d:16},{n:9,d:18},{n:10,d:20},{n:11,d:22},
              {n:12,d:24},{n:13,d:26},{n:14,d:28},{n:15,d:30},{n:16,d:32},
              {n:17,d:34},{n:18,d:36},{n:19,d:38},{n:20,d:40},{n:25,d:50}],
-    // decoys for Phase 3.5
     decoys:[{n:4,d:10},{n:8,d:20},{n:3,d:9},{n:5,d:20},{n:7,d:21}]
   },
   {
@@ -912,34 +847,1338 @@ const DET_MISSIONS = [
              {n:12,d:60},{n:13,d:65},{n:14,d:70},{n:15,d:75},{n:16,d:80},
              {n:17,d:85},{n:18,d:90},{n:19,d:95},{n:20,d:100},{n:25,d:125}],
     decoys:[{n:3,d:9},{n:4,d:12},{n:6,d:18},{n:7,d:14},{n:8,d:24}]
+  },
+  {
+    id:'G', phase:'3', family:'⅙', fi:4, color:'#FF8844', colorLight:'#CC5522',
+    label:'ครอบครัว ⅙', emoji:'🕵️',
+    goal:'หาให้เจอว่าใครเป็นพวกเดียวกับ ⅙',
+    hint:'เลขล่าง ÷ เลขบน = 6 เสมอ',
+    members:[{n:2,d:12},{n:3,d:18},{n:4,d:24},{n:5,d:30},
+             {n:6,d:36},{n:7,d:42},{n:8,d:48},{n:9,d:54},
+             {n:10,d:60},{n:11,d:66},{n:12,d:72},{n:13,d:78},
+             {n:14,d:84},{n:15,d:90},{n:16,d:96},{n:17,d:102},
+             {n:18,d:108},{n:19,d:114},{n:20,d:120}],
+    decoys:[{n:4,d:12},{n:6,d:24},{n:3,d:6},{n:5,d:15},{n:7,d:21}]
+  },
+  {
+    id:'H', phase:'3', family:'⅛', fi:5, color:'#AA66FF', colorLight:'#7733CC',
+    label:'ครอบครัว ⅛', emoji:'🕵️',
+    goal:'หาให้เจอว่าใครเป็นพวกเดียวกับ ⅛',
+    hint:'เลขล่าง ÷ เลขบน = 8 เสมอ',
+    members:[{n:2,d:16},{n:3,d:24},{n:4,d:32},{n:5,d:40},
+             {n:6,d:48},{n:7,d:56},{n:8,d:64},{n:9,d:72},
+             {n:10,d:80},{n:11,d:88},{n:12,d:96},{n:13,d:104},
+             {n:14,d:112},{n:15,d:120},{n:16,d:128},{n:17,d:136},
+             {n:18,d:144},{n:19,d:152},{n:20,d:160}],
+    decoys:[{n:3,d:12},{n:5,d:20},{n:7,d:28},{n:4,d:12},{n:6,d:18}]
+  },
+  {
+    id:'I', phase:'3', family:'⅗', fi:6, color:'#FF44AA', colorLight:'#CC1177',
+    label:'ครอบครัว ⅗', emoji:'🕵️',
+    goal:'หาให้เจอว่าใครเป็นพวกเดียวกับ ⅗',
+    hint:'เลขล่าง ÷ เลขบน = 5/3 (1.666...)',
+    members:[{n:6,d:10},{n:9,d:15},{n:12,d:20},{n:15,d:25},
+             {n:18,d:30},{n:21,d:35},{n:24,d:40},{n:27,d:45},
+             {n:30,d:50},{n:33,d:55},{n:36,d:60},{n:39,d:65},
+             {n:42,d:70},{n:45,d:75},{n:48,d:80},{n:51,d:85},
+             {n:54,d:90},{n:57,d:95},{n:60,d:100},{n:75,d:125}],
+    decoys:[{n:4,d:10},{n:8,d:20},{n:12,d:30},{n:5,d:15},{n:10,d:25}]
   }
 ];
 
-// Mission Bonus — World Mental Math (Phase 3 → bridge to FL-04 simplification)
 const BONUS_MISSION = {
   id:'BONUS', phase:'3.5', label:'🚀 กับดักนักบิน', color:'#FF6BF8',
   desc:'เลือกทุกตัวที่เป็น ½ — ระวังตัวปลอม!',
   items:[
     {n:2,d:4,real:true},{n:3,d:6,real:true},{n:4,d:10,real:false},
     {n:5,d:10,real:true},{n:7,d:14,real:true},{n:8,d:20,real:false},
-    {n:9,d:18,real:true},{n:12,d:24,real:true}
+    {n:9,d:18,real:true},{n:12,d:24,real:true},
+    {n:6,d:12,real:true},{n:10,d:20,real:true},{n:14,d:28,real:true},
+    {n:3,d:12,real:false},{n:6,d:16,real:false},{n:9,d:24,real:false},
+    {n:15,d:30,real:true},{n:18,d:36,real:true},{n:20,d:40,real:true}
   ]
 };
 
 // ═══════════════════════════════════════════════
-// DETECTIVE STATE
+// ACHIEVEMENTS
 // ═══════════════════════════════════════════════
+const ACHIEVEMENTS = [
+  { id: 'first_play', name: '🌟 นักเรียนใหม่', desc: 'เล่นเกมครั้งแรก', icon: '🌟',
+    check: (s) => s.totalPlays >= 1 },
+  { id: 'perfect_half', name: '🏆 ครึ่งหนึ่งสมบูรณ์', desc: 'ทำ Perfect กับ ½', icon: '🏆',
+    check: (s) => s.perfectFamilies && s.perfectFamilies.includes(0) },
+  { id: 'perfect_third', name: '🏆 หนึ่งในสามสมบูรณ์', desc: 'ทำ Perfect กับ ⅓', icon: '🏆',
+    check: (s) => s.perfectFamilies && s.perfectFamilies.includes(1) },
+  { id: 'perfect_quarter', name: '🏆 หนึ่งในสี่สมบูรณ์', desc: 'ทำ Perfect กับ ¼', icon: '🏆',
+    check: (s) => s.perfectFamilies && s.perfectFamilies.includes(2) },
+  { id: 'perfect_fifth', name: '🏆 หนึ่งในห้าสมบูรณ์', desc: 'ทำ Perfect กับ ⅕', icon: '🏆',
+    check: (s) => s.perfectFamilies && s.perfectFamilies.includes(3) },
+  { id: 'perfect_sixth', name: '🏆 หนึ่งในหกสมบูรณ์', desc: 'ทำ Perfect กับ ⅙', icon: '🏆',
+    check: (s) => s.perfectFamilies && s.perfectFamilies.includes(4) },
+  { id: 'perfect_eighth', name: '🏆 หนึ่งในแปดสมบูรณ์', desc: 'ทำ Perfect กับ ⅛', icon: '🏆',
+    check: (s) => s.perfectFamilies && s.perfectFamilies.includes(5) },
+  { id: 'perfect_threefifths', name: '🏆 สามในห้าสมบูรณ์', desc: 'ทำ Perfect กับ ⅗', icon: '🏆',
+    check: (s) => s.perfectFamilies && s.perfectFamilies.includes(6) },
+  { id: 'master_all', name: '👑 จ้าวแห่งเศษส่วน', desc: 'ทำ Perfect ครบทุกครอบครัว', icon: '👑',
+    check: (s) => s.perfectFamilies && s.perfectFamilies.length >= 7 },
+  { id: 'streak_5', name: '🔥 สายฟ้าแลบ', desc: 'ทำ Streak 5 ครั้งติด', icon: '🔥',
+    check: (s) => s.bestStreak >= 5 },
+  { id: 'streak_10', name: '⚡ สายฟ้าฟาด', desc: 'ทำ Streak 10 ครั้งติด', icon: '⚡',
+    check: (s) => s.bestStreak >= 10 },
+  { id: 'detective', name: '🕵️ นักสืบมือใหม่', desc: 'ผ่านภารกิจนักสืบ 1 ครั้ง', icon: '🕵️',
+    check: (s) => s.detectiveCompleted >= 1 },
+  { id: 'detective_master', name: '🔍 นักสืบผู้ยิ่งใหญ่', desc: 'ผ่านภารกิจนักสืบครบทุกภารกิจ', icon: '🔍',
+    check: (s) => s.detectiveCompleted >= 5 },
+  { id: 'coin_collector', name: '💰 นักสะสมเหรียญ', desc: 'มีเหรียญ 500+', icon: '💰',
+    check: (s) => s.coins >= 500 },
+  { id: 'level_5', name: '📈 นักเรียนขยัน', desc: 'ถึง Level 5', icon: '📈',
+    check: (s) => s.level >= 5 },
+  { id: 'level_10', name: '🎯 นักเรียนเก่ง', desc: 'ถึง Level 10', icon: '🎯',
+    check: (s) => s.level >= 10 },
+  { id: 'shop_collector', name: '🎨 นักออกแบบ', desc: 'ปลดล็อกสีครบทุกชุด', icon: '🎨',
+    check: (s) => s.unlockedColors >= 4 }
+];
+
+// ═══════════════════════════════════════════════
+// DAILY QUESTS
+// ═══════════════════════════════════════════════
+const DAILY_QUESTS = [
+  { id: 'dq1', name: '📝 นักเรียนขยัน', desc: 'ตอบถูก 10 ข้อ', target: 10, reward: 50 },
+  { id: 'dq2', name: '🔥 สายฟ้า', desc: 'ทำ Streak 5 ครั้ง', target: 5, reward: 30 },
+  { id: 'dq3', name: '🕵️ นักสืบ', desc: 'เล่น Phase 3 1 ครั้ง', target: 1, reward: 40 },
+  { id: 'dq4', name: '🎯 แม่นยำ', desc: 'ตอบถูก 80% ขึ้นไป', target: 80, reward: 60 },
+  { id: 'dq5', name: '🏆 หลากหลาย', desc: 'เล่น 3 ตระกูลต่างกัน', target: 3, reward: 45 }
+];
+
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+let sF=0, sL=0;
+let qIdx=0, denoms=[], score=0, streak=0, bestStreak=0, nCorrect=0, total=0;
+let locked=false, fbTimer=null;
+let arOn=false, mpLoaded=false, mpH=null, mpCam=null;
+let soundOn=true, audioCtx=null;
+let reviewMode=false, reviewQueue=[], reviewModeSRS=false;
+
+// ── DETECTIVE STATE ──
 let detMission=null, detPhase=0, detQIdx=0, detTotal=0;
 let detItems=[], detSelected=new Set(), detScore=0, detStreak=0, detBestStreak=0;
 let detLocked=false, detTimer=null, detBatchMode=false;
 
 // ═══════════════════════════════════════════════
-// DETECTIVE ENGINE
+// G — PERSISTENT GAMIFICATION
 // ═══════════════════════════════════════════════
-function openDetective(){
-  show('s-detective');
-  renderDetMissionList();
+function gKey(){ return pKey('gstate'); }
+let G={ xp:0, level:1, coins:0, preset:'default' };
+
+function loadG(){
+  G={ xp:0, level:1, coins:0, preset:'default' };
+  try{
+    const saved=JSON.parse(localStorage.getItem(gKey())||'null');
+    if(saved && typeof saved==='object') G=Object.assign(G, saved);
+  }catch(e){}
 }
+function saveG(){ try{ localStorage.setItem(gKey(), JSON.stringify(G)); }catch(e){} }
+function xpForLevel(lv){ return lv*50; }
+
+function addXP(amount){
+  G.xp+=amount;
+  let leveledUp=false;
+  while(G.xp>=xpForLevel(G.level)){
+    G.xp-=xpForLevel(G.level);
+    G.level++;
+    leveledUp=true;
+  }
+  saveG();
+  return leveledUp;
+}
+function addCoins(gain){
+  const c=Math.ceil(gain/5);
+  G.coins+=c;
+  saveG();
+  return c;
+}
+function spendCoins(amount){
+  if(G.coins<amount) return false;
+  G.coins-=amount;
+  saveG();
+  return true;
+}
+
+function refreshGHUD(){
+  document.querySelectorAll('.g-level').forEach(el=>el.textContent=`LV ${G.level}`);
+  document.querySelectorAll('.g-coins').forEach(el=>el.textContent=G.coins);
+  document.querySelectorAll('.g-xp-fill').forEach(el=>{
+    const pct=Math.min(100, Math.round((G.xp/xpForLevel(G.level))*100));
+    el.style.width=pct+'%';
+  });
+  document.querySelectorAll('.g-xp-label').forEach(el=>el.textContent=`${G.xp}/${xpForLevel(G.level)} XP`);
+}
+
+// ═══════════════════════════════════════════════
+// SRS (SPACED REPETITION SYSTEM)
+// ═══════════════════════════════════════════════
+const SRS_INTERVALS = [1, 3, 7, 14, 30, 60];
+
+function getSRSData() {
+  try { return JSON.parse(localStorage.getItem(pKey('srs')) || '{}'); } catch(e) { return {}; }
+}
+function saveSRSData(data) {
+  try { localStorage.setItem(pKey('srs'), JSON.stringify(data)); } catch(e) {}
+}
+function scheduleReview(fi, dn, correct) {
+  const srs = getSRSData();
+  const key = `${fi}_${dn}`;
+  const now = Date.now();
+  if (correct) {
+    if (!srs[key]) {
+      srs[key] = { level: 0, lastReview: now, nextReview: now + (SRS_INTERVALS[0] * 86400000) };
+    } else {
+      const nextLevel = Math.min(srs[key].level + 1, SRS_INTERVALS.length - 1);
+      srs[key].level = nextLevel;
+      srs[key].lastReview = now;
+      srs[key].nextReview = now + (SRS_INTERVALS[nextLevel] * 86400000);
+    }
+  } else {
+    srs[key] = { level: 0, lastReview: now, nextReview: now + (SRS_INTERVALS[0] * 86400000) };
+  }
+  saveSRSData(srs);
+}
+function getDueReviews() {
+  const srs = getSRSData();
+  const now = Date.now();
+  const due = [];
+  for (const [key, data] of Object.entries(srs)) {
+    if (data.nextReview <= now) {
+      const [fi, dn] = key.split('_');
+      due.push({ fi: parseInt(fi), dn: parseInt(dn), level: data.level });
+    }
+  }
+  due.sort((a, b) => a.level - b.level);
+  return due;
+}
+
+// ═══════════════════════════════════════════════
+// ACHIEVEMENT FUNCTIONS
+// ═══════════════════════════════════════════════
+function getAchievements() {
+  try { return JSON.parse(localStorage.getItem(pKey('achievements')) || '{}'); } catch(e) { return {}; }
+}
+function saveAchievements(data) {
+  try { localStorage.setItem(pKey('achievements'), JSON.stringify(data)); } catch(e) {}
+}
+function checkAchievements(stats) {
+  const unlocked = getAchievements();
+  const newlyUnlocked = [];
+  for (const ach of ACHIEVEMENTS) {
+    if (!unlocked[ach.id] && ach.check(stats)) {
+      unlocked[ach.id] = { unlockedAt: Date.now() };
+      newlyUnlocked.push(ach);
+    }
+  }
+  if (newlyUnlocked.length > 0) {
+    saveAchievements(unlocked);
+    showAchievementPopup(newlyUnlocked);
+  }
+  return newlyUnlocked;
+}
+
+function showAchievementPopup(achievements) {
+  const container = document.createElement('div');
+  container.style.cssText = `
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(5,10,20,0.95); border: 2px solid #FFE600;
+    border-radius: 20px; padding: 2rem; z-index: 100;
+    text-align: center; max-width: 400px; width: 90%;
+    backdrop-filter: blur(20px);
+    animation: slideUp 0.5s ease;
+  `;
+  container.innerHTML = `
+    <div style="font-size:3rem">${achievements[0].icon}</div>
+    <div style="font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:900;color:#FFE600;margin:.5rem 0">
+      🎉 ปลดล็อก Achievement!
+    </div>
+    ${achievements.map(a => `
+      <div style="margin:.5rem 0;padding:.5rem;border:1px solid rgba(255,230,0,0.2);border-radius:10px">
+        <div style="font-weight:700;color:var(--tp)">${a.name}</div>
+        <div style="font-size:0.8rem;color:var(--tm)">${a.desc}</div>
+      </div>
+    `).join('')}
+    <button onclick="this.parentElement.remove()" style="
+      font-family:'Orbitron',sans-serif;font-size:0.8rem;
+      padding:8px 24px;border-radius:99px;border:2px solid #FFE600;
+      background:transparent;color:#FFE600;cursor:pointer;margin-top:1rem;
+    ">เข้าใจ!</button>
+  `;
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes slideUp {
+      from { opacity: 0; transform: translate(-50%, 40%) scale(0.9); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+  `;
+  document.head.appendChild(style);
+  document.body.appendChild(container);
+  setTimeout(() => { if (container.parentElement) container.remove(); }, 5000);
+}
+
+function collectStats() {
+  const stats = {
+    totalPlays: 1,
+    perfectFamilies: [],
+    bestStreak: 0,
+    detectiveCompleted: 0,
+    coins: G.coins,
+    level: G.level,
+    unlockedColors: getUnlocked().length
+  };
+  for (let i = 0; i < FAM.length; i++) {
+    for (let lv = 0; lv < 3; lv++) {
+      const best = getBest(i, lv);
+      if (best && best.acc === 100) {
+        if (!stats.perfectFamilies.includes(i)) stats.perfectFamilies.push(i);
+      }
+    }
+  }
+  try {
+    const streakData = JSON.parse(localStorage.getItem(pKey('best_streak')) || '0');
+    stats.bestStreak = Math.max(stats.bestStreak, streakData);
+  } catch(e) {}
+  try {
+    const detData = JSON.parse(localStorage.getItem(pKey('detective_completed')) || '0');
+    stats.detectiveCompleted = detData;
+  } catch(e) {}
+  return stats;
+}
+
+function checkAllAchievements() {
+  const stats = collectStats();
+  const newAchs = checkAchievements(stats);
+  try { localStorage.setItem(pKey('best_streak'), JSON.stringify(bestStreak)); } catch(e) {}
+  return newAchs;
+}
+
+function showAchievementList() {
+  const unlocked = getAchievements();
+  const container = document.createElement('div');
+  container.style.cssText = `
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem;
+  `;
+  const box = document.createElement('div');
+  box.style.cssText = `
+    background: var(--bgc); border: 1px solid var(--bgl);
+    border-radius: 20px; padding: 1.5rem;
+    max-width: 500px; width: 100%; max-height: 80vh;
+    overflow-y: auto;
+  `;
+  box.innerHTML = `
+    <div style="font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:900;color:var(--nb);text-align:center;margin-bottom:1rem">
+      🏆 ความสำเร็จ
+    </div>
+    ${ACHIEVEMENTS.map(a => {
+      const isUnlocked = !!unlocked[a.id];
+      return `
+        <div style="display:flex;align-items:center;gap:.8rem;padding:.6rem .8rem;margin:.4rem 0;border-radius:10px;
+          background: ${isUnlocked ? 'rgba(57,255,20,0.08)' : 'rgba(255,255,255,0.03)'};
+          border: 1px solid ${isUnlocked ? 'rgba(57,255,20,0.3)' : 'rgba(255,255,255,0.05)'};
+          opacity: ${isUnlocked ? 1 : 0.4};">
+          <span style="font-size:1.8rem">${isUnlocked ? a.icon : '❓'}</span>
+          <div style="flex:1">
+            <div style="font-weight:700;color:${isUnlocked ? 'var(--tp)' : 'var(--tm)'}">${a.name}</div>
+            <div style="font-size:0.7rem;color:var(--tm)">${a.desc}</div>
+          </div>
+          ${isUnlocked ? '<span style="color:#39FF14">✅</span>' : '<span style="color:var(--tm)">🔒</span>'}
+        </div>
+      `;
+    }).join('')}
+    <button onclick="this.parentElement.parentElement.remove()" style="
+      font-family:'Orbitron',sans-serif;font-size:0.8rem;
+      padding:10px 24px;border-radius:99px;border:1px solid var(--bgl);
+      background:transparent;color:var(--ts);cursor:pointer;
+      display:block;margin:1rem auto 0;
+    ">ปิด</button>
+  `;
+  container.appendChild(box);
+  container.onclick = (e) => { if (e.target === container) container.remove(); };
+  document.body.appendChild(container);
+}
+
+// ═══════════════════════════════════════════════
+// DAILY QUEST FUNCTIONS
+// ═══════════════════════════════════════════════
+function getDailyQuests() {
+  const today = new Date().toDateString();
+  try {
+    const data = JSON.parse(localStorage.getItem(pKey('daily_quests')) || 'null');
+    if (data && data.date === today) return data.quests;
+  } catch(e) {}
+  const quests = DAILY_QUESTS.map(q => ({ ...q, progress: 0, completed: false }));
+  localStorage.setItem(pKey('daily_quests'), JSON.stringify({ date: today, quests }));
+  return quests;
+}
+
+function updateDailyQuest(questId, amount) {
+  const today = new Date().toDateString();
+  let data;
+  try {
+    data = JSON.parse(localStorage.getItem(pKey('daily_quests')) || 'null');
+    if (!data || data.date !== today) {
+      data = { date: today, quests: DAILY_QUESTS.map(q => ({ ...q, progress: 0, completed: false })) };
+    }
+  } catch(e) {
+    data = { date: today, quests: DAILY_QUESTS.map(q => ({ ...q, progress: 0, completed: false })) };
+  }
+  const quest = data.quests.find(q => q.id === questId);
+  if (quest && !quest.completed) {
+    quest.progress = Math.min(quest.progress + amount, quest.target);
+    if (quest.progress >= quest.target) {
+      quest.completed = true;
+      addCoins(quest.reward);
+      addXP(quest.reward);
+      refreshGHUD();
+      showFB(`✅ ภารกิจสำเร็จ! +${quest.reward} XP 🪙`, true);
+      sndComplete();
+    }
+  }
+  localStorage.setItem(pKey('daily_quests'), JSON.stringify(data));
+}
+
+function checkQuestCompletion(type, value) {
+  const map = {
+    'correct': { id: 'dq1', amount: 1 },
+    'streak': { id: 'dq2', amount: 1 },
+    'detective': { id: 'dq3', amount: 1 },
+    'accuracy': { id: 'dq4', amount: value },
+    'family': { id: 'dq5', amount: 1 }
+  };
+  const m = map[type];
+  if (m) updateDailyQuest(m.id, m.amount);
+}
+
+function showDailyQuests() {
+  const quests = getDailyQuests();
+  const container = document.createElement('div');
+  container.style.cssText = `
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem;
+  `;
+  const box = document.createElement('div');
+  box.style.cssText = `
+    background: var(--bgc); border: 1px solid var(--bgl);
+    border-radius: 20px; padding: 1.5rem;
+    max-width: 400px; width: 100%;
+  `;
+  box.innerHTML = `
+    <div style="font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:900;color:var(--nb);text-align:center;margin-bottom:1rem">
+      📋 ภารกิจวันนี้
+    </div>
+    ${quests.map(q => `
+      <div style="display:flex;align-items:center;gap:.8rem;padding:.6rem .8rem;margin:.4rem 0;border-radius:10px;
+        background: ${q.completed ? 'rgba(57,255,20,0.08)' : 'rgba(255,255,255,0.03)'};
+        border: 1px solid ${q.completed ? 'rgba(57,255,20,0.3)' : 'rgba(255,255,255,0.05)'};">
+        <span style="font-size:1.4rem">${q.completed ? '✅' : '⏳'}</span>
+        <div style="flex:1">
+          <div style="font-weight:700;color:${q.completed ? 'var(--tp)' : 'var(--tm)'}">${q.name}</div>
+          <div style="font-size:0.7rem;color:var(--tm)">${q.desc}</div>
+          <div style="margin-top:4px;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden">
+            <div style="height:100%;width:${q.completed ? 100 : (q.progress/q.target*100)}%;background:${q.completed ? '#39FF14' : 'var(--nb)'};border-radius:2px"></div>
+          </div>
+          <div style="font-size:0.6rem;color:var(--tm);margin-top:2px">
+            ${q.completed ? '✅ สำเร็จ!' : `${q.progress}/${q.target}`}
+          </div>
+        </div>
+        <span style="font-size:0.8rem;color:var(--ny)">🪙${q.reward}</span>
+      </div>
+    `).join('')}
+    <button onclick="this.parentElement.parentElement.remove()" style="
+      font-family:'Orbitron',sans-serif;font-size:0.8rem;
+      padding:10px 24px;border-radius:99px;border:1px solid var(--bgl);
+      background:transparent;color:var(--ts);cursor:pointer;
+      display:block;margin:1rem auto 0;
+    ">ปิด</button>
+  `;
+  container.appendChild(box);
+  container.onclick = (e) => { if (e.target === container) container.remove(); };
+  document.body.appendChild(container);
+}
+
+// ═══════════════════════════════════════════════
+// THEME / SOUND
+// ═══════════════════════════════════════════════
+function isLight(){ return document.documentElement.getAttribute('data-theme')==='light'; }
+function fcolor(f){ return isLight() ? f.colorLight : f.color; }
+
+function fracHTML(f){
+  return `<span class="frac" role="img" aria-label="${f.th}">
+    <span class="frac-n" aria-hidden="true">${f.n}</span>
+    <span class="frac-bar" aria-hidden="true"></span>
+    <span class="frac-d" aria-hidden="true">${f.d}</span>
+  </span>`;
+}
+function fracInline(f){
+  return `<span class="frac-inline" role="img" aria-label="${f.th}">
+    <span class="fi-n" aria-hidden="true">${f.n}</span>
+    <span class="fi-slash" aria-hidden="true">/</span>
+    <span class="fi-d" aria-hidden="true">${f.d}</span>
+  </span>`;
+}
+
+// ═══════════════════════════════════════════════
+// PROFILES
+// ═══════════════════════════════════════════════
+const PROFILES_KEY='ff_profiles';
+const ACTIVE_PROFILE_KEY='ff_active_profile';
+let activeProfile=null;
+
+function getProfiles(){
+  try{ return JSON.parse(localStorage.getItem(PROFILES_KEY)||'[]'); }catch(e){ return []; }
+}
+function saveProfiles(list){ try{ localStorage.setItem(PROFILES_KEY, JSON.stringify(list)); }catch(e){} }
+function getActiveProfile(){ return localStorage.getItem(ACTIVE_PROFILE_KEY) || null; }
+function setActiveProfile(id){ activeProfile=id; try{ localStorage.setItem(ACTIVE_PROFILE_KEY, id); }catch(e){} }
+function pKey(key){ return `ff_p_${activeProfile}_${key}`; }
+
+function createProfile(name){
+  const clean=name.trim().slice(0,18);
+  if(!clean) return null;
+  const list=getProfiles();
+  const id='pf_'+Date.now()+'_'+Math.floor(Math.random()*1000);
+  list.push({ id, name:clean, created:Date.now() });
+  saveProfiles(list);
+  return id;
+}
+function deleteProfile(id){
+  const list=getProfiles().filter(p=>p.id!==id);
+  saveProfiles(list);
+  const prefix=`ff_p_${id}_`;
+  const toRemove=[];
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);
+    if(k && k.startsWith(prefix)) toRemove.push(k);
+  }
+  toRemove.forEach(k=>localStorage.removeItem(k));
+}
+
+function buildProfilePicker(){
+  const list=document.getElementById('profile-list');
+  const profiles=getProfiles();
+  list.innerHTML='';
+  if(profiles.length===0){
+    list.innerHTML=`<div class="hint" style="padding:.5rem 0">ยังไม่มีผู้เล่น — เพิ่มชื่อด้านล่างเพื่อเริ่มเล่น</div>`;
+  }
+  profiles.forEach(p=>{
+    const card=document.createElement('div');
+    card.className='profile-card';
+    card.innerHTML=`<span class="pf-name">👤 ${escapeHtml(p.name)}</span>`;
+    const del=document.createElement('button');
+    del.className='profile-del'; del.setAttribute('aria-label', `ลบผู้เล่น ${p.name}`);
+    del.textContent='✕';
+    del.onclick=(e)=>{ e.stopPropagation(); handleDeleteProfile(p.id, p.name); };
+    card.appendChild(del);
+    card.addEventListener('click', ()=>selectProfile(p.id));
+    list.appendChild(card);
+  });
+}
+function escapeHtml(s){ return s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function handleCreateProfile(){
+  const input=document.getElementById('new-profile-name');
+  const id=createProfile(input.value);
+  if(!id){ input.focus(); return; }
+  input.value='';
+  selectProfile(id);
+}
+function selectProfile(id){ enterProfile(id, true); }
+function handleDeleteProfile(id, name){
+  if(!confirm(`ลบผู้เล่น "${name}"? คะแนนและไอเทมทั้งหมดของคนนี้จะหายไป`)) return;
+  deleteProfile(id);
+  if(getActiveProfile()===id){ try{ localStorage.removeItem(ACTIVE_PROFILE_KEY); }catch(e){} activeProfile=null; }
+  buildProfilePicker();
+}
+function switchProfile(){ buildProfilePicker(); show('s-profile'); }
+
+function enterProfile(id, goToStart){
+  setActiveProfile(id);
+  loadG();
+  applyPreset(G.preset, false);
+  refreshGHUD();
+  refreshReviewBadge();
+  refreshSRSBadge();
+  const prof=getProfiles().find(p=>p.id===id);
+  const nameEl=document.getElementById('active-pf-name');
+  if(nameEl) nameEl.textContent=prof ? `👤 ${prof.name}` : '';
+  if(goToStart) show('s-start');
+}
+
+// ═══════════════════════════════════════════════
+// BEST SCORE
+// ═══════════════════════════════════════════════
+function bestKey(fi,lv){ return pKey(`best_${fi}_${lv}`); }
+function getBest(fi,lv){
+  try{ return JSON.parse(localStorage.getItem(bestKey(fi,lv))||'null'); }catch(e){ return null; }
+}
+function setBest(fi,lv,sc,acc){
+  const cur=getBest(fi,lv);
+  if(!cur || sc>cur.score){ localStorage.setItem(bestKey(fi,lv), JSON.stringify({score:sc,acc})); return true; }
+  return false;
+}
+
+// ═══════════════════════════════════════════════
+// WRONG LOG
+// ═══════════════════════════════════════════════
+function wrongLogKey(){ return pKey('wronglog'); }
+function getWrongLog(){
+  try{ return JSON.parse(localStorage.getItem(wrongLogKey())||'{}'); }catch(e){ return {}; }
+}
+function saveWrongLog(log){ try{ localStorage.setItem(wrongLogKey(), JSON.stringify(log)); }catch(e){} }
+function markWrong(fi, dn){
+  const log=getWrongLog();
+  const k=`${fi}_${dn}`;
+  log[k]=(log[k]||0)+1;
+  saveWrongLog(log);
+}
+function clearWrongEntry(fi, dn){
+  const log=getWrongLog();
+  delete log[`${fi}_${dn}`];
+  saveWrongLog(log);
+}
+function wrongLogCount(){ return Object.keys(getWrongLog()).length; }
+
+function refreshReviewBadge(){
+  const n=wrongLogCount();
+  const btn=document.getElementById('review-btn');
+  const badge=document.getElementById('review-badge');
+  if(btn){ btn.style.display = n>0 ? 'flex' : 'none'; if(badge) badge.textContent=String(n); }
+}
+function refreshSRSBadge(){
+  const due=getDueReviews();
+  const badge=document.getElementById('srs-badge');
+  if(badge){ badge.textContent=String(due.length); badge.style.display=due.length>0?'inline-block':'none'; }
+}
+
+// ═══════════════════════════════════════════════
+// COIN SHOP
+// ═══════════════════════════════════════════════
+const PRESETS = [
+  { id:'default', label:'NEON BLUE', cost:0, nb:'#00CFFF', ng:'#39FF14', np:'#FF6BF8' },
+  { id:'sunset', label:'SUNSET', cost:40, nb:'#FF7700', ng:'#FFE600', np:'#FF2D55' },
+  { id:'lime', label:'LIME PUNCH', cost:80, nb:'#39FF14', ng:'#00CFFF', np:'#FFE600' },
+  { id:'royal', label:'ROYAL', cost:150, nb:'#FF6BF8', ng:'#00CFFF', np:'#39FF14' }
+];
+
+function applyPreset(id, save){
+  const p=PRESETS.find(x=>x.id===id) || PRESETS[0];
+  const root=document.documentElement.style;
+  root.setProperty('--nb', p.nb);
+  root.setProperty('--ng', p.ng);
+  root.setProperty('--np', p.np);
+  if(save){ G.preset=p.id; saveG(); }
+}
+
+function getUnlocked(){
+  try{ return JSON.parse(localStorage.getItem(pKey('unlocked'))||'["default"]'); }
+  catch(e){ return ['default']; }
+}
+function setUnlocked(arr){ try{ localStorage.setItem(pKey('unlocked'), JSON.stringify(arr)); }catch(e){} }
+
+function openShop(){ buildShop(); document.getElementById('shop-modal').classList.add('show'); }
+function closeShop(){ document.getElementById('shop-modal').classList.remove('show'); }
+
+function buildShop(){
+  const unlocked=getUnlocked();
+  const list=document.getElementById('preset-list');
+  list.innerHTML='';
+  PRESETS.forEach(p=>{
+    const isOwned=unlocked.includes(p.id);
+    const isActive=G.preset===p.id;
+    const row=document.createElement('div');
+    row.className='preset-row';
+    row.innerHTML=`
+      <div style="display:flex;align-items:center;gap:.6rem">
+        <div class="preset-swatches">
+          <span class="preset-dot" style="background:${p.nb}"></span>
+          <span class="preset-dot" style="background:${p.ng}"></span>
+          <span class="preset-dot" style="background:${p.np}"></span>
+        </div>
+        <span class="preset-name">${p.label}</span>
+      </div>
+    `;
+    const btn=document.createElement('button');
+    if(isActive){ btn.className='preset-btn active-preset'; btn.textContent='ใช้อยู่'; btn.disabled=true; }
+    else if(isOwned){ btn.className='preset-btn owned'; btn.textContent='สวมใส่'; btn.onclick=()=>{ applyPreset(p.id, true); buildShop(); }; }
+    else { btn.className='preset-btn locked'; btn.textContent=`🪙${p.cost}`; btn.onclick=()=>{
+      if(spendCoins(p.cost)){ const u=getUnlocked(); u.push(p.id); setUnlocked(u); applyPreset(p.id, true); refreshGHUD(); buildShop(); sndStreak(); }
+      else showFB('🪙 เหรียญไม่พอ!', false);
+    };}
+    row.appendChild(btn);
+    list.appendChild(row);
+  });
+}
+
+// ═══════════════════════════════════════════════
+// THEME / SOUND TOGGLES
+// ═══════════════════════════════════════════════
+function toggleTheme(){
+  const html=document.documentElement;
+  const next=html.getAttribute('data-theme')==='light'?'dark':'light';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('ff_theme', next);
+  document.querySelectorAll('.theme-btn').forEach(b=>b.textContent=next==='light'?'☀️':'🌙');
+  if(document.getElementById('s-select').classList.contains('active')) buildGrid();
+}
+
+function toggleSound(){
+  soundOn=!soundOn;
+  localStorage.setItem('ff_sound', soundOn?'1':'0');
+  document.querySelectorAll('.sound-btn').forEach(b=>b.textContent=soundOn?'🔊':'🔇');
+  if(soundOn) beep(660,.08);
+}
+
+// ═══════════════════════════════════════════════
+// TTS
+// ═══════════════════════════════════════════════
+const ttsOn = !!(window.speechSynthesis && window.SpeechSynthesisUtterance);
+let ttsVoices=[];
+if(ttsOn){
+  const loadVoices=()=>{ ttsVoices=speechSynthesis.getVoices(); };
+  loadVoices();
+  speechSynthesis.onvoiceschanged=loadVoices;
+}
+function pickVoice(lang){ return ttsVoices.find(v=>v.lang && v.lang.toLowerCase().startsWith(lang)) || null; }
+function speakOne(text, lang){
+  return new Promise(resolve=>{
+    if(!ttsOn || !soundOn){ resolve(); return; }
+    try{
+      const u=new SpeechSynthesisUtterance(text);
+      u.lang=lang; u.rate=0.95; u.volume=0.85;
+      const v=pickVoice(lang); if(v) u.voice=v;
+      u.onend=resolve; u.onerror=resolve;
+      speechSynthesis.speak(u);
+    }catch(e){ resolve(); }
+  });
+}
+async function speakWord(f){
+  if(!ttsOn || !soundOn) return;
+  try{ speechSynthesis.cancel(); }catch(e){}
+  await speakOne(f.th, 'th-TH');
+  await speakOne(f.en, 'en-US');
+  await speakOne(f.zh, 'zh-CN');
+}
+
+// ═══════════════════════════════════════════════
+// AUDIO
+// ═══════════════════════════════════════════════
+function beep(freq, dur, type, vol){
+  if(!soundOn) return;
+  try{
+    if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==='suspended') audioCtx.resume();
+    const t=audioCtx.currentTime;
+    const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+    osc.type=type||'sine'; osc.frequency.setValueAtTime(freq,t);
+    gain.gain.setValueAtTime(vol||.15,t);
+    gain.gain.exponentialRampToValueAtTime(.0001,t+(dur||.15));
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.start(t); osc.stop(t+(dur||.15));
+  }catch(e){}
+}
+function sndCorrect(){ beep(880,.1,'sine',.14); setTimeout(()=>beep(1175,.15,'sine',.14),90); }
+function sndWrong(){ beep(180,.25,'sawtooth',.1); }
+function sndStreak(){ beep(660,.07,'sine',.12); setTimeout(()=>beep(880,.07,'sine',.12),80); setTimeout(()=>beep(1320,.18,'sine',.14),160); }
+function sndComplete(){ beep(523,.12,'sine',.13); setTimeout(()=>beep(659,.12,'sine',.13),120); setTimeout(()=>beep(784,.12,'sine',.13),240); setTimeout(()=>beep(1047,.25,'sine',.15),360); }
+
+function primeAudio(){
+  try{ if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)(); if(audioCtx.state==='suspended') audioCtx.resume(); }catch(e){}
+}
+document.addEventListener('pointerdown', primeAudio, {once:true});
+document.addEventListener('touchstart', primeAudio, {once:true, passive:true});
+
+// ═══════════════════════════════════════════════
+// SCREEN HELPERS
+// ═══════════════════════════════════════════════
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>{ s.classList.toggle('active', s.id===id); });
+  const el=document.getElementById(id); if(el) el.scrollTop=0;
+}
+function goStart(){ stopAR(); show('s-start'); }
+function goSelect(){ stopAR(); reviewMode=false; buildGrid(); refreshReviewBadge(); refreshSRSBadge(); show('s-select'); }
+function retryGame(){ reviewMode=false; startGame(sF, sL); }
+
+// ═══════════════════════════════════════════════
+// SELECT SCREEN
+// ═══════════════════════════════════════════════
+function buildGrid(){
+  const g=document.getElementById('fam-grid');
+  g.innerHTML='';
+  FAM.forEach((f,i)=>{
+    const c=fcolor(f);
+    const best=getBest(i,sL);
+    const card=document.createElement('div');
+    card.className='fam-card'+(i===sF?' picked':'');
+    card.style.setProperty('--fc', c);
+    card.style.borderColor=c+'44';
+    if(i===sF) card.style.boxShadow=`0 0 20px ${c}55`;
+    card.innerHTML=`
+      <span class="fc-sym" style="color:${c};text-shadow:0 0 12px ${c}">${fracHTML(f)}</span>
+      <div class="fc-name" style="color:${c}">${f.name}</div>
+      <div class="fc-desc">${f.instr}</div>
+      <div class="fc-best">${best ? '🏆 ดีที่สุด: '+best.score : ''}</div>
+    `;
+    const btn=document.createElement('button');
+    btn.className='btn-start';
+    btn.textContent='▶ START';
+    btn.style.borderColor=c; btn.style.color=c;
+    btn.setAttribute('aria-label', `เริ่มเล่น ${f.name}`);
+    btn.addEventListener('click', e=>{ e.stopPropagation(); startGame(i, sL); });
+    card.appendChild(btn);
+    card.addEventListener('click', ()=>{
+      sF=i;
+      document.querySelectorAll('.fam-card').forEach(cd=>{ cd.classList.remove('picked'); cd.style.boxShadow=''; });
+      card.classList.add('picked');
+      card.style.boxShadow=`0 0 20px ${c}55`;
+    });
+    g.appendChild(card);
+  });
+}
+
+function pickLv(l){
+  sL=l;
+  ['lb0','lb1','lb2'].forEach((id,i)=>{ document.getElementById(id).classList.toggle('sel', i===l); });
+  buildGrid();
+}
+
+// ═══════════════════════════════════════════════
+// REVIEW
+// ═══════════════════════════════════════════════
+function startReview(){
+  const log=getWrongLog();
+  if(Object.keys(log).length===0){ showFB('ยังไม่มีข้อผิดสะสม!', true); return; }
+  const entries=Object.entries(log).sort((a,b)=>b[1]-a[1]);
+  reviewQueue=entries.slice(0,20).map(([k])=>{ const [fi,dn]=k.split('_'); return { fi:parseInt(fi,10), dn:parseInt(dn,10) }; });
+  reviewMode=true; reviewModeSRS=false;
+  const dominantFi=reviewQueue[0].fi;
+  sF=dominantFi; sL=0;
+  const f=FAM[dominantFi];
+  denoms=reviewQueue.map(q=>q.dn);
+  score=0; streak=0; bestStreak=0; nCorrect=0; total=denoms.length;
+  qIdx=0; locked=false;
+  const hs=document.getElementById('hud-sym');
+  hs.textContent='📚'; hs.style.color=f.color; hs.style.textShadow=`0 0 12px ${f.color}`;
+  document.getElementById('hud-name').textContent='REVIEW MODE';
+  document.getElementById('sc-val').textContent='0';
+  document.getElementById('streak').className='';
+  document.getElementById('feedback').className='';
+  document.getElementById('cam-st').textContent=arOn?'🤲 AR mode':'👆 แตะปุ่มคำตอบ';
+  document.getElementById('cam-st').classList.remove('warn');
+  speakWord(f);
+  show('s-game');
+  loadQ();
+}
+
+function startSmartReview(){
+  const due=getDueReviews();
+  if(due.length===0){ showFB('🎉 ไม่มีข้อที่ต้องทบทวน!', true); return; }
+  reviewQueue=due.slice(0,15).map(item=>({ fi:item.fi, dn:item.dn }));
+  reviewMode=true; reviewModeSRS=true;
+  const dominantFi=reviewQueue[0].fi;
+  sF=dominantFi; sL=0;
+  const f=FAM[dominantFi];
+  denoms=reviewQueue.map(q=>q.dn);
+  score=0; streak=0; bestStreak=0; nCorrect=0; total=denoms.length;
+  qIdx=0; locked=false;
+  const hs=document.getElementById('hud-sym');
+  hs.textContent='🧠'; hs.style.color=f.color; hs.style.textShadow=`0 0 12px ${f.color}`;
+  document.getElementById('hud-name').textContent='SRS REVIEW';
+  document.getElementById('sc-val').textContent='0';
+  document.getElementById('streak').className='';
+  document.getElementById('feedback').className='';
+  document.getElementById('cam-st').textContent=arOn?'🤲 AR mode':'👆 แตะปุ่มคำตอบ';
+  document.getElementById('cam-st').classList.remove('warn');
+  speakWord(f);
+  show('s-game');
+  loadQ();
+}
+
+// ═══════════════════════════════════════════════
+// GAME
+// ═══════════════════════════════════════════════
+function startGame(fi, lv){
+  sF=fi; sL=lv;
+  const f=FAM[fi];
+  denoms=[...f.lv[lv]];
+  score=0; streak=0; bestStreak=0; nCorrect=0; total=denoms.length;
+  qIdx=0; locked=false;
+  const hs=document.getElementById('hud-sym');
+  hs.innerHTML=fracInline(f); hs.style.color=fcolor(f); hs.style.textShadow=`0 0 12px ${fcolor(f)}`;
+  document.getElementById('hud-name').textContent=f.name;
+  document.getElementById('sc-val').textContent='0';
+  document.getElementById('streak').className='';
+  document.getElementById('feedback').className='';
+  document.getElementById('cam-st').textContent=arOn?'🤲 AR mode':'👆 แตะปุ่มคำตอบ';
+  document.getElementById('cam-st').classList.remove('warn');
+  speakWord(f);
+  show('s-game');
+  loadQ();
+}
+
+function loadQ(){
+  if(qIdx>=total){ endGame(); return; }
+  locked=false;
+  const activeFi = reviewMode ? reviewQueue[qIdx].fi : sF;
+  const f=FAM[activeFi], dn=denoms[qIdx];
+  const ans=Math.round(dn*f.n/f.d);
+  document.getElementById('q-instr').textContent=f.instr;
+  const qExpr=document.getElementById('q-expr');
+  qExpr.innerHTML=`<span style="color:${fcolor(f)}">${fracHTML(f)}</span> &times; <span style="color:var(--ny)">${dn}</span> = <span style="color:var(--tp)">?</span>`;
+  qExpr.setAttribute('aria-label', `${f.th} คูณ ${dn} เท่ากับเท่าไหร่`);
+  document.getElementById('q-sub').textContent=`${f.sym} = ${f.n}/${f.d}  ×  ${dn} ÷ ${f.d} = ?`;
+  document.getElementById('hud-qn').textContent=`Q ${qIdx+1}/${total}`;
+  document.getElementById('pb-f').style.width=`${(qIdx/total)*100}%`;
+  if(reviewMode){
+    const hs=document.getElementById('hud-sym');
+    hs.innerHTML=fracInline(f); hs.style.color=fcolor(f); hs.style.textShadow=`0 0 12px ${fcolor(f)}`;
+  }
+  renderAnswers(ans, f);
+}
+
+function renderAnswers(ans, f){
+  const area=document.getElementById('ans-area');
+  area.innerHTML='';
+  const pool=new Set();
+  while(pool.size<3){
+    const off=(Math.floor(Math.random()*5)+1)*(Math.random()<.5?1:-1);
+    const w=ans+off;
+    if(w>0 && w!==ans) pool.add(w);
+  }
+  const opts=[ans,...pool].sort(()=>Math.random()-.5);
+  opts.forEach(v=>{
+    const btn=document.createElement('button');
+    btn.className='ans-btn';
+    btn.textContent=v;
+    btn.setAttribute('aria-label', `คำตอบ ${v}`);
+    btn.addEventListener('click', ()=>onAnswer(btn, v===ans, f));
+    area.appendChild(btn);
+  });
+}
+
+function onAnswer(btn, isRight, f){
+  if(locked) return;
+  locked=true;
+  const color=fcolor(f);
+  const activeFi = reviewMode ? reviewQueue[qIdx].fi : sF;
+  document.querySelectorAll('.ans-btn').forEach(b=>b.disabled=true);
+  if(isRight){
+    btn.classList.add('correct-flash');
+    btn.style.borderColor=color; btn.style.color=color;
+    btn.style.boxShadow=`0 0 34px ${color}99`;
+    const gain=100+streak*10;
+    score+=gain; nCorrect++; streak++;
+    bestStreak=Math.max(bestStreak,streak);
+    document.getElementById('sc-val').textContent=score;
+    const coinsEarned=addCoins(gain);
+    const leveledUp=addXP(Math.round(gain/4));
+    refreshGHUD();
+    scheduleReview(activeFi, denoms[qIdx], true);
+    clearWrongEntry(activeFi, denoms[qIdx]);
+    refreshReviewBadge();
+    refreshSRSBadge();
+    showFB('✓ CORRECT!', true);
+    sndCorrect();
+    speakWord(f);
+    checkQuestCompletion('correct', 1);
+    if(streak>=5) checkQuestCompletion('streak', 1);
+    if(leveledUp){ setTimeout(()=>{ showFB(`⬆ LEVEL UP! LV ${G.level}`, true); sndStreak(); }, 650); }
+    if(streak>=3){
+      const el=document.getElementById('streak');
+      el.textContent=`🔥 STREAK ×${streak}`;
+      el.className='show';
+      sndStreak();
+    }
+    boom(window.innerWidth/2, window.innerHeight*.45, color);
+    setTimeout(()=>{ qIdx++; loadQ(); }, leveledUp ? 1200 : 600);
+  } else {
+    btn.classList.add('wrong-flash');
+    streak=0; document.getElementById('streak').className='';
+    showFB('✗ ลองใหม่!', false);
+    sndWrong();
+    scheduleReview(activeFi, denoms[qIdx], false);
+    markWrong(activeFi, denoms[qIdx]);
+    refreshReviewBadge();
+    refreshSRSBadge();
+    setTimeout(()=>{
+      document.querySelectorAll('.ans-btn').forEach(b=>{
+        b.disabled=false;
+        b.classList.remove('wrong-flash','correct-flash');
+      });
+      locked=false;
+    }, 550);
+  }
+}
+
+function showFB(msg, ok){
+  const el=document.getElementById('feedback');
+  el.textContent=msg; el.className=ok?'show-ok':'show-no';
+  clearTimeout(fbTimer);
+  fbTimer=setTimeout(()=>{ el.className=''; }, 700);
+}
+
+// ═══════════════════════════════════════════════
+// END GAME
+// ═══════════════════════════════════════════════
+function drawFracCanvas(c, f, cx, cy, size, color){
+  c.save();
+  c.textAlign='center';
+  c.textBaseline='alphabetic';
+  c.fillStyle=color;
+  c.font=`900 ${size}px Orbitron`;
+  const gap=size*.12, barW=size*1.1, barH=Math.max(4,size*.07);
+  c.fillText(String(f.n), cx, cy-gap);
+  c.fillRect(cx-barW/2, cy-barH/2, barW, barH);
+  c.fillText(String(f.d), cx, cy+gap+size*.78);
+  c.restore();
+}
+
+async function shareResultCard(){
+  const f=FAM[sF];
+  const acc=total>0 ? Math.round((nCorrect/total)*100) : 0;
+  const W=1080, H=1350;
+  const cv=document.createElement('canvas');
+  cv.width=W; cv.height=H;
+  const c=cv.getContext('2d');
+  try{ await document.fonts.ready; }catch(e){}
+  const bgGrad=c.createRadialGradient(W/2, -H/2, 0, W/2, H/2, W);
+  bgGrad.addColorStop(0,'#0A1628'); bgGrad.addColorStop(0.5,'#050A14'); bgGrad.addColorStop(1,'#000000');
+  c.fillStyle=bgGrad; c.fillRect(0,0,W,H);
+  c.save();
+  const glow=c.createRadialGradient(W/2, H*0.25, 50, W/2, H*0.25, 350);
+  glow.addColorStop(0, 'rgba(0,207,255,0.08)'); glow.addColorStop(1, 'rgba(0,207,255,0)');
+  c.fillStyle=glow; c.beginPath(); c.arc(W/2, H*0.25, 350, 0, Math.PI*2); c.fill();
+  c.restore();
+  c.textAlign='center';
+  c.font='700 26px Orbitron';
+  c.fillStyle='#FF6BF8';
+  c.fillText('⚡ 3LANG SMART KIDS · BUILD NOT BORN', W/2, 85);
+  c.font='900 80px Orbitron';
+  const titleGrad=c.createLinearGradient(W*0.2,0,W*0.8,0);
+  titleGrad.addColorStop(0,'#00CFFF'); titleGrad.addColorStop(0.5,'#FF6BF8'); titleGrad.addColorStop(1,'#FFE600');
+  c.fillStyle=titleGrad;
+  c.shadowColor='rgba(0,207,255,0.3)'; c.shadowBlur=30;
+  c.fillText('FRACTION', W/2, 180);
+  c.shadowBlur=0;
+  c.fillText('FAMILY', W/2, 255);
+  c.font='900 56px Orbitron';
+  c.fillStyle=nCorrect===total ? '#39FF14' : '#00CFFF';
+  c.shadowColor=nCorrect===total ? 'rgba(57,255,20,0.3)' : 'rgba(0,207,255,0.3)';
+  c.shadowBlur=20;
+  c.fillText(nCorrect===total ? '✦ PERFECT! ✦' : '✦ COMPLETE! ✦', W/2, 340);
+  c.shadowBlur=0;
+  const famColor=isLight()? f.colorLight : f.color;
+  c.save();
+  const glowCircle=c.createRadialGradient(W/2, 430, 20, W/2, 430, 120);
+  glowCircle.addColorStop(0, famColor + '44'); glowCircle.addColorStop(1, famColor + '00');
+  c.fillStyle=glowCircle; c.beginPath(); c.arc(W/2, 430, 120, 0, Math.PI*2); c.fill();
+  drawFracCanvas(c, f, W/2, 430, 90, famColor);
+  c.restore();
+  c.font='700 34px Kanit';
+  c.fillStyle='#E8F4FF';
+  c.fillText(f.name.replace(f.sym,'').trim(), W/2, 560);
+  c.save();
+  c.shadowColor='rgba(255,230,0,0.3)'; c.shadowBlur=40;
+  c.font='900 150px Orbitron';
+  c.fillStyle='#FFE600';
+  c.fillText(String(score), W/2, 740);
+  c.shadowBlur=0;
+  c.font='400 28px "Share Tech Mono"';
+  c.fillStyle='#7AAABE';
+  c.fillText('SCORE', W/2, 780);
+  c.restore();
+  const stats=[
+    [`✅ ${nCorrect}/${total}`, 'CORRECT', '#39FF14'],
+    [`🔥 ${bestStreak}`, 'BEST STREAK', '#FF7700'],
+    [`🎯 ${acc}%`, 'ACCURACY', '#00CFFF']
+  ];
+  const colW=W/3;
+  stats.forEach((s,i)=>{
+    const cx=colW*i+colW/2;
+    c.font='700 48px Orbitron';
+    c.fillStyle=s[2];
+    c.fillText(s[0], cx, 870);
+    c.font='400 20px "Share Tech Mono"';
+    c.fillStyle='#3A5A70';
+    c.fillText(s[1], cx, 905);
+  });
+  c.save();
+  c.strokeStyle='rgba(255,255,255,0.05)'; c.lineWidth=2;
+  c.beginPath(); c.moveTo(W*0.1, 940); c.lineTo(W*0.9, 940); c.stroke();
+  c.restore();
+  c.font='400 30px "Share Tech Mono"';
+  c.fillStyle='#E8F4FF';
+  c.fillText(`👑 LV ${G.level}`, W/2, 1010);
+  c.fillStyle='#FFE600';
+  c.fillText(`🪙 ${G.coins}`, W/2, 1060);
+  const unlocked=getAchievements();
+  const achCount=Object.keys(unlocked).length;
+  if(achCount>0){ c.font='400 22px Orbitron'; c.fillStyle='#FF6BF8'; c.fillText(`🏆 ${achCount} Achievements`, W/2, 1120); }
+  c.font='600 26px Kanit';
+  c.fillStyle='#7AAABE';
+  c.fillText('เก่งเลข · เก่งโลก · เก่งภาษา', W/2, 1220);
+  c.font='400 18px Kanit';
+  c.fillStyle='#3A5A70';
+  c.fillText('© 2025 3LANG SMART KIDS · Built Not Born', W/2, 1270);
+  cv.toBlob(blob=>{
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    const denomWord={2:'half',3:'third',4:'quarter',5:'fifth',6:'sixth',8:'eighth'}[f.d] || `${f.d}ths`;
+    a.download=`fraction-family_${denomWord}_${score}.png`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url), 2000);
+  }, 'image/png');
+}
+
+function endGame(){
+  stopAR();
+  const acc=Math.round((nCorrect/total)*100);
+  const isNew= reviewMode ? false : setBest(sF, sL, score, acc);
+  if(!reviewMode && nCorrect===total){ addCoins(50); }
+  refreshGHUD();
+  if(nCorrect>0){
+    checkQuestCompletion('accuracy', acc);
+    checkQuestCompletion('family', 1);
+  }
+  checkAllAchievements();
+  document.getElementById('res-ttl').textContent=reviewMode ? '📚 REVIEW COMPLETE!' : (nCorrect===total ? '✦ PERFECT! ✦' : '✦ COMPLETE! ✦');
+  document.getElementById('res-score').textContent=score;
+  document.getElementById('rs-c').textContent=`${nCorrect}/${total}`;
+  document.getElementById('rs-b').textContent=bestStreak;
+  document.getElementById('rs-a').textContent=acc+'%';
+  const rb=document.getElementById('res-best');
+  if(reviewMode){
+    const remaining=wrongLogCount();
+    rb.textContent=remaining>0 ? `📚 ยังเหลือข้อผิด ${remaining} ข้อ` : '✅ ทบทวนครบแล้ว!';
+    rb.className='old';
+  } else if(isNew){ rb.textContent='🏆 NEW BEST!'; rb.className='new'; }
+  else { const best=getBest(sF, sL); rb.textContent=best ? `ดีที่สุด: ${best.score}` : ''; rb.className='old'; }
+  reviewMode=false;
+  show('s-result');
+  sndComplete();
+  boom(window.innerWidth/2, window.innerHeight/2, '#FFE600', 70);
+}
+
+// ═══════════════════════════════════════════════
+// PARTICLES
+// ═══════════════════════════════════════════════
+const pCv=document.getElementById('p-canvas');
+const pCtx=pCv.getContext('2d');
+let particles=[];
+function resizeP(){ pCv.width=window.innerWidth; pCv.height=window.innerHeight; }
+window.addEventListener('resize', resizeP);
+resizeP();
+
+function boom(x,y,color,n=20){
+  for(let i=0;i<n;i++){
+    const a=Math.random()*Math.PI*2, sp=2+Math.random()*7;
+    particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-2.5,
+      r:2+Math.random()*4,life:1,dec:.018+Math.random()*.02,color});
+  }
+}
+function tickP(){
+  pCtx.clearRect(0,0,pCv.width,pCv.height);
+  particles=particles.filter(p=>p.life>0);
+  particles.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy; p.vy+=.13; p.life-=p.dec;
+    pCtx.save(); pCtx.globalAlpha=p.life;
+    pCtx.beginPath(); pCtx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    pCtx.fillStyle=p.color; pCtx.shadowColor=p.color; pCtx.shadowBlur=8;
+    pCtx.fill(); pCtx.restore();
+  });
+  requestAnimationFrame(tickP);
+}
+tickP();
+
+// ═══════════════════════════════════════════════
+// AR
+// ═══════════════════════════════════════════════
+function toggleAR(){ if(arOn) stopAR(); else openAR(); }
+
+function openAR(){
+  const ctxErr=insecureContextReason();
+  if(ctxErr){ setCamStatus(ctxErr, true); return; }
+  const ua=navigator.userAgent||'';
+  if(/FBAN|FBAV|FB_IAB|Line\/|Instagram|Musical\.ly|TikTok/.test(ua)){
+    setCamStatus('❌ Browser ใน App นี้ใช้กล้องไม่ได้ — กรุณาเปิดลิงก์ใน Safari หรือ Chrome แทน', true);
+    return;
+  }
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    setCamStatus('❌ Browser นี้ไม่รองรับกล้อง — แตะปุ่มคำตอบเล่นต่อได้เลย', true);
+    return;
+  }
+  document.getElementById('cam-st').textContent='⏳ กำลังโหลด AR...';
+  document.getElementById('cam-st').classList.remove('warn');
+  if(!mpLoaded){
+    loadScript('https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js', ()=>{
+      loadScript('https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js', ()=>{
+        mpLoaded=true; startAR();
+      }, arLoadErr);
+    }, arLoadErr);
+  } else { startAR(); }
+}
+
+function insecureContextReason(){
+  if(window.isSecureContext===false){
+    if(location.protocol==='file:') return '❌ เปิดจากไฟล์ในเครื่อง (file://) กล้องใช้ไม่ได้ — ต้องเปิดผ่าน https:// เท่านั้น';
+    return '❌ หน้านี้ไม่ปลอดภัย (ต้องเป็น https://) กล้องจึงถูกบล็อก — แตะปุ่มคำตอบเล่นต่อได้เลย';
+  }
+  return null;
+}
+
+function setCamStatus(msg, isWarn){
+  const el=document.getElementById('cam-st');
+  el.textContent=msg;
+  el.classList.toggle('warn', !!isWarn);
+}
+
+function loadScript(src, onok, onerr){
+  const s=document.createElement('script');
+  const timer=setTimeout(()=>{ s.onload=s.onerror=null; onerr(new Error('timeout')); }, 8000);
+  s.src=src; s.crossOrigin='anonymous';
+  s.onload=()=>{ clearTimeout(timer); onok(); };
+  s.onerror=()=>{ clearTimeout(timer); onerr(); };
+  document.head.appendChild(s);
+}
+function arLoadErr(){ setCamStatus('❌ โหลดสคริปต์ AR ไม่ได้ — ใช้ปุ่มแทน', true); }
+
+function startAR(){
+  const ctxErr=insecureContextReason();
+  if(ctxErr){ setCamStatus(ctxErr, true); return; }
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    setCamStatus('❌ เบราว์เซอร์รุ่นนี้ไม่รองรับกล้อง', true);
+    return;
+  }
+  const tryCamera=(constraints)=>navigator.mediaDevices.getUserMedia(constraints);
+  tryCamera({video:{facingMode:{ideal:'user'}},audio:false})
+    .catch(()=>tryCamera({video:true,audio:false}))
+    .then(stream=>{
+      const vid=document.getElementById('webcam');
+      vid.srcObject=stream; vid.play();
+      vid.classList.add('live');
+      arOn=true;
+      setCamStatus('🤲 AR — จีบนิ้วตอบได้', false);
+      document.getElementById('ar-toggle').textContent='📷 ปิดกล้อง';
+      setupHandCanvas();
+      startHandTracking(vid);
+      stream.getVideoTracks()[0].addEventListener('ended', ()=>{
+        if(arOn){ stopAR(); setCamStatus('❌ กล้องถูกปิด — แตะปุ่มคำตอบแทน', true); }
+      });
+    })
+    .catch(err=>{
+      console.warn('camera', err);
+      setCamStatus(cameraErrorMessage(err), true);
+    });
+}
+
+function cameraErrorMessage(err){
+  switch(err && err.name){
+    case 'NotAllowedError': return '❌ ไม่ได้รับอนุญาตใช้กล้อง — เช็คสิทธิ์กล้องในตั้งค่า';
+    case 'NotFoundError': return '❌ ไม่พบกล้องในอุปกรณ์นี้';
+    case 'NotReadableError': return '❌ แอปอื่นกำลังใช้กล้องอยู่ — ปิดแล้วลองใหม่';
+    case 'OverconstrainedError': return '❌ กล้องไม่รองรับโหมดที่ขอ';
+    case 'SecurityError': return '❌ หน้านี้ไม่ปลอดภัย (ต้องเป็น https://)';
+    case 'AbortError': return '❌ เปิดกล้องไม่สำเร็จ — ลองใหม่';
+    default: return '❌ เปิดกล้องไม่สำเร็จ — แตะปุ่มคำตอบแทน';
+  }
+}
+
+function stopAR(){
+  if(mpCam){ try{mpCam.stop();}catch(e){} mpCam=null; }
+  if(mpH){ try{mpH.close();}catch(e){} mpH=null; }
+  const vid=document.getElementById('webcam');
+  if(vid.srcObject){ vid.srcObject.getTracks().forEach(t=>t.stop()); vid.srcObject=null; }
+  vid.classList.remove('live');
+  arOn=false;
+  document.getElementById('ar-toggle').textContent='📷 เปิดกล้อง AR';
+  setCamStatus('👆 แตะปุ่มคำตอบ', false);
+  const cv=document.getElementById('hand-canvas');
+  cv.getContext('2d').clearRect(0,0,cv.width,cv.height);
+}
+
+function setupHandCanvas(){
+  const cv=document.getElementById('hand-canvas');
+  cv.width=window.innerWidth; cv.height=window.innerHeight;
+}
+
+let wasPinch=false;
+function startHandTracking(vid){
+  mpH=new Hands({locateFile:f=>`https://cdn.jsdelivr.net/npm/@mediapipe/hands/${f}`});
+  mpH.setOptions({maxNumHands:1,modelComplexity:1,minDetectionConfidence:.6,minTrackingConfidence:.4});
+  mpH.onResults(onHands);
+  mpCam=new Camera(vid,{ onFrame:async()=>{ if(mpH) await mpH.send({image:vid}); }, width:640, height:480 });
+  mpCam.start();
+}
+
+function onHands(r){
+  const cv=document.getElementById('hand-canvas');
+  const c=cv.getContext('2d');
+  c.clearRect(0,0,cv.width,cv.height);
+  if(!r.multiHandLandmarks||!r.multiHandLandmarks.length){ wasPinch=false; return; }
+  const lm=r.multiHandLandmarks[0];
+  const W=cv.width, H=cv.height;
+  drawSkeleton(c, lm, W, H);
+  const ix=(1-lm[8].x)*W, iy=lm[8].y*H;
+  const dx=(1-lm[4].x)*W-ix, dy=lm[4].y*H-iy;
+  const isPinch=Math.sqrt(dx*dx+dy*dy)<W*.075;
+  c.save();
+  c.beginPath(); c.arc(ix,iy,18,0,Math.PI*2);
+  c.strokeStyle=isPinch?'#39FF14':'#00CFFF';
+  c.lineWidth=2.5; c.shadowColor=isPinch?'#39FF14':'#00CFFF'; c.shadowBlur=12; c.stroke();
+  c.beginPath(); c.arc(ix,iy,5,0,Math.PI*2);
+  c.fillStyle=isPinch?'#39FF14':'#00CFFF'; c.fill();
+  c.restore();
+  if(!isPinch && wasPinch) clickNearest(ix, iy);
+  wasPinch=isPinch;
+}
+
+function clickNearest(px, py){
+  let best=null, bestD=Infinity;
+  document.querySelectorAll('.ans-btn:not([disabled])').forEach(btn=>{
+    const r=btn.getBoundingClientRect();
+    const bx=r.left+r.width/2, by=r.top+r.height/2;
+    const d=Math.sqrt((px-bx)**2+(py-by)**2);
+    if(d<bestD){ bestD=d; best=btn; }
+  });
+  if(best && bestD<150) best.click();
+}
+
+function drawSkeleton(c, lm, W, H){
+  const CONN=[[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],
+              [0,9],[9,10],[10,11],[11,12],[0,13],[13,14],[14,15],[15,16],
+              [0,17],[17,18],[18,19],[19,20],[5,9],[9,13],[13,17]];
+  c.save();
+  c.strokeStyle='rgba(57,255,20,.5)'; c.lineWidth=1.5;
+  c.shadowColor='#39FF14'; c.shadowBlur=5;
+  CONN.forEach(([a,b])=>{
+    const p=lm[a],q=lm[b];
+    c.beginPath(); c.moveTo((1-p.x)*W,p.y*H); c.lineTo((1-q.x)*W,q.y*H); c.stroke();
+  });
+  lm.forEach(p=>{ c.beginPath(); c.arc((1-p.x)*W,p.y*H,3,0,Math.PI*2); c.fillStyle='#39FF14'; c.fill(); });
+  c.restore();
+}
+
+document.addEventListener('visibilitychange', ()=>{
+  if(document.hidden && arOn){ stopAR(); setCamStatus('⏸ ปิดกล้องอัตโนมัติ (สลับแอป)', true); }
+});
+
+// ═══════════════════════════════════════════════
+// DETECTIVE
+// ═══════════════════════════════════════════════
+function openDetective(){ show('s-detective'); renderDetMissionList(); }
 
 function renderDetMissionList(){
   const area=document.getElementById('det-mission-list');
@@ -951,9 +2190,7 @@ function renderDetMissionList(){
     card.style.borderColor=m.color;
     card.style.boxShadow=`0 0 12px ${m.color}33`;
     card.innerHTML=`
-      <div class="det-card-header" style="color:${m.color}">
-        ${m.emoji} ภารกิจ ${m.id} <span class="det-phase-badge">PHASE ${m.phase}</span>
-      </div>
+      <div class="det-card-header" style="color:${m.color}">${m.emoji} ภารกิจ ${m.id} <span class="det-phase-badge">PHASE ${m.phase}</span></div>
       <div class="det-card-family" style="color:${m.color}">${m.label}</div>
       <div class="det-card-goal">${m.goal}</div>
       <div class="det-card-hint">💡 ${m.hint}</div>
@@ -966,7 +2203,6 @@ function renderDetMissionList(){
     `;
     area.appendChild(card);
   });
-  // Bonus mission card
   const bonus=document.createElement('div');
   bonus.className='det-mission-card';
   bonus.style.borderColor='#FF6BF8';
@@ -987,9 +2223,7 @@ function startDetMission(mi, lv){
   detPhase=lv;
   detBatchMode=false;
   const all=[...detMission.members];
-  // LV1=first 10, LV2=second 10, LV3=all 20
   const slice=lv===0?all.slice(0,10):lv===1?all.slice(10,20):all;
-  // shuffle
   detItems=slice.map(v=>({...v,isReal:true})).sort(()=>Math.random()-.5);
   detQIdx=0; detTotal=detItems.length;
   detScore=0; detStreak=0; detBestStreak=0; detLocked=false;
@@ -1013,7 +2247,6 @@ function renderDetQ(){
   detLocked=false;
   const m=detMission, f=FAM[m.fi], item=detItems[detQIdx];
   const color=m.color;
-
   document.getElementById('det-hud-label').textContent=`${m.emoji} ภารกิจ ${m.id} · LV ${detPhase+1}`;
   document.getElementById('det-hud-label').style.color=color;
   document.getElementById('det-qn').textContent=`Q ${detQIdx+1}/${detTotal}`;
@@ -1021,11 +2254,10 @@ function renderDetQ(){
   document.getElementById('det-pb-f').style.background=color;
   document.getElementById('det-score').textContent=detScore;
   document.getElementById('det-score').style.color=color;
-
-  // Question display
   const qBox=document.getElementById('det-q-display');
   qBox.style.borderColor=color;
   qBox.style.boxShadow=`0 0 20px ${color}33`;
+  const ratio = m.fi===0?2:m.fi===1?3:m.fi===2?4:m.fi===3?5:m.fi===4?6:m.fi===5?8:5/3;
   qBox.innerHTML=`
     <div class="det-q-label" style="color:${color}">นี่คือสมาชิกครอบครัว ${m.family} มั้ย?</div>
     <div class="det-frac-big" style="color:${color}">
@@ -1033,11 +2265,9 @@ function renderDetQ(){
       <span class="det-frac-bar" style="background:${color}"></span>
       <span class="det-frac-d">${item.d}</span>
     </div>
-    <div class="det-q-sub" style="color:var(--tm)">${item.n} × ${m.family.replace('½','2').replace('⅓','3').replace('¼','4').replace('⅕','5')} = ${item.n * (m.fi===0?2:m.fi===1?3:m.fi===2?4:5)} ${item.n*(m.fi===0?2:m.fi===1?3:m.fi===2?4:5)===item.d?'✓':'≠'} ${item.d}</div>
+    <div class="det-q-sub" style="color:var(--tm)">${item.n} × ${m.family.replace('½','2').replace('⅓','3').replace('¼','4').replace('⅕','5').replace('⅙','6').replace('⅛','8').replace('⅗','5/3')} ${m.fi===6?'≈':'='} ${typeof ratio === 'number' ? Math.round(item.n * ratio) : '?'} ${typeof ratio === 'number' && Math.round(item.n * ratio)===item.d ? '✓':'≠'} ${item.d}</div>
     <div class="det-goal" style="color:${color}88">${m.goal}</div>
   `;
-
-  // Answer buttons — YES / NO
   const aArea=document.getElementById('det-ans-area');
   aArea.innerHTML='';
   [
@@ -1052,8 +2282,6 @@ function renderDetQ(){
     btn.onclick=()=>onDetAnswer(btn, opt.val, item.isReal, color);
     aArea.appendChild(btn);
   });
-
-  // Update streak display
   document.getElementById('det-streak').textContent=detStreak>=3?`🔥 STREAK ×${detStreak}`:'';
   document.getElementById('det-streak').className=detStreak>=3?'show':'';
 }
@@ -1067,7 +2295,6 @@ function renderBatchQ(){
   document.getElementById('det-pb-f').style.width='100%';
   document.getElementById('det-pb-f').style.background=color;
   document.getElementById('det-score').textContent=detScore;
-
   const qBox=document.getElementById('det-q-display');
   qBox.style.borderColor=color;
   qBox.innerHTML=`
@@ -1075,7 +2302,6 @@ function renderBatchQ(){
     <div class="det-batch-grid" id="det-batch-grid"></div>
     <div class="det-goal" style="color:${color}88">ระวัง! มีตัวปลอมซ่อนอยู่</div>
   `;
-
   const grid=document.getElementById('det-batch-grid');
   detSelected=new Set();
   detItems.forEach((item,i)=>{
@@ -1090,7 +2316,6 @@ function renderBatchQ(){
     };
     grid.appendChild(btn);
   });
-
   const aArea=document.getElementById('det-ans-area');
   aArea.innerHTML='';
   const submit=document.createElement('button');
@@ -1105,7 +2330,6 @@ function onDetAnswer(btn, picked, isReal, color){
   if(detLocked) return;
   detLocked=true;
   document.querySelectorAll('.det-ans-btn').forEach(b=>b.disabled=true);
-
   const correct=(picked===isReal);
   if(correct){
     btn.style.background=color+'33'; btn.style.boxShadow=`0 0 20px ${color}88`;
@@ -1146,7 +2370,6 @@ function onBatchSubmit(color){
   showDetFB(`${correct}/${total8} ถูก! +${pts} คะแนน 🕵️`, correct===total8);
   if(correct===total8) boom(window.innerWidth/2,window.innerHeight*.4,'#FF6BF8');
   sndCorrect();
-
   const aArea=document.getElementById('det-ans-area');
   aArea.innerHTML='';
   const done=document.createElement('button');
@@ -1177,210 +2400,11 @@ function endDetMission(){
     เช่น <b style="color:#00CFFF">18/54 → 6/18 → 2/6 → 1/3</b><br>
     <span style="color:#FF6BF8">ย่อเศษส่วน = พากลับบ้านหาครอบครัวเดิม ✈️</span>
     </div>`;
-}
-
-// ═══════════════════════════════════════════════
-// COIN SHOP — unlockable accent-color presets (the coin sink)
-// each preset re-skins --nb (primary neon) across the whole app
-// ═══════════════════════════════════════════════
-const PRESETS = [
-  { id:'default', label:'NEON BLUE',  cost:0,   nb:'#00CFFF', ng:'#39FF14', np:'#FF6BF8' },
-  { id:'sunset',  label:'SUNSET',     cost:40,  nb:'#FF7700', ng:'#FFE600', np:'#FF2D55' },
-  { id:'lime',    label:'LIME PUNCH', cost:80,  nb:'#39FF14', ng:'#00CFFF', np:'#FFE600' },
-  { id:'royal',   label:'ROYAL',      cost:150, nb:'#FF6BF8', ng:'#00CFFF', np:'#39FF14' }
-];
-
-// ═══════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════
-let sF=0, sL=0;
-let qIdx=0, denoms=[], score=0, streak=0, bestStreak=0, nCorrect=0, total=0;
-let locked=false, fbTimer=null;
-let arOn=false, mpLoaded=false, mpH=null, mpCam=null;
-let soundOn=true, audioCtx=null;
-let reviewMode=false, reviewQueue=[];
-
-// ═══════════════════════════════════════════════
-// G — persistent gamification state (XP / level / coins)
-// XP-to-level formula: level*50 (per 3Lang house standard)
-// coin formula: ceil(gain/5) per correct answer
-// ═══════════════════════════════════════════════
-// ═══════════════════════════════════════════════
-// G — persistent gamification state (XP / level / coins)
-// XP-to-level formula: level*50 (per 3Lang house standard)
-// coin formula: ceil(gain/5) per correct answer
-// scoped per profile so siblings don't share XP/coins
-// ═══════════════════════════════════════════════
-function gKey(){ return pKey('gstate'); }
-let G={ xp:0, level:1, coins:0, preset:'default' };
-
-function loadG(){
-  G={ xp:0, level:1, coins:0, preset:'default' };
-  try{
-    const saved=JSON.parse(localStorage.getItem(gKey())||'null');
-    if(saved && typeof saved==='object') G=Object.assign(G, saved);
-  }catch(e){ /* corrupt save — fall back to defaults */ }
-}
-function saveG(){
-  try{ localStorage.setItem(gKey(), JSON.stringify(G)); }catch(e){}
-}
-function xpForLevel(lv){ return lv*50; }
-
-// returns true if a level-up happened (so callers can celebrate it)
-function addXP(amount){
-  G.xp+=amount;
-  let leveledUp=false;
-  while(G.xp>=xpForLevel(G.level)){
-    G.xp-=xpForLevel(G.level);
-    G.level++;
-    leveledUp=true;
-  }
-  saveG();
-  return leveledUp;
-}
-function addCoins(gain){
-  const c=Math.ceil(gain/5);
-  G.coins+=c;
-  saveG();
-  return c;
-}
-function spendCoins(amount){
-  if(G.coins<amount) return false;
-  G.coins-=amount;
-  saveG();
-  return true;
-}
-
-function refreshGHUD(){
-  document.querySelectorAll('.g-level').forEach(el=>el.textContent=`LV ${G.level}`);
-  document.querySelectorAll('.g-coins').forEach(el=>el.textContent=G.coins);
-  document.querySelectorAll('.g-xp-fill').forEach(el=>{
-    const pct=Math.min(100, Math.round((G.xp/xpForLevel(G.level))*100));
-    el.style.width=pct+'%';
-  });
-  document.querySelectorAll('.g-xp-label').forEach(el=>el.textContent=`${G.xp}/${xpForLevel(G.level)} XP`);
-}
-
-// ═══════════════════════════════════════════════
-// THEME / SOUND PREFS
-// ═══════════════════════════════════════════════
-function isLight(){ return document.documentElement.getAttribute('data-theme')==='light'; }
-function fcolor(f){ return isLight() ? f.colorLight : f.color; }
-
-// ═══════════════════════════════════════════════
-// MATH NOTATION — single source of truth for rendering a fraction.
-// Used everywhere f.sym used to be drawn directly, so n/d are always
-// shown with a real numerator/bar/denominator instead of a Unicode
-// glyph. aria-label carries the Thai word form for screen readers.
-// ═══════════════════════════════════════════════
-function fracHTML(f){
-  return `<span class="frac" role="img" aria-label="${f.th}">`
-       + `<span class="frac-n" aria-hidden="true">${f.n}</span>`
-       + `<span class="frac-bar" aria-hidden="true"></span>`
-       + `<span class="frac-d" aria-hidden="true">${f.d}</span>`
-       + `</span>`;
-}
-// compact single-line counterpart for tight badges (e.g. the HUD strip)
-// where a 2-line stacked fraction would over-grow the row's height
-function fracInline(f){
-  return `<span class="frac-inline" role="img" aria-label="${f.th}">`
-       + `<span class="fi-n" aria-hidden="true">${f.n}</span>`
-       + `<span class="fi-slash" aria-hidden="true">/</span>`
-       + `<span class="fi-d" aria-hidden="true">${f.d}</span>`
-       + `</span>`;
-}
-
-// applies an unlocked color preset by overriding the root CSS vars
-function applyPreset(id, save){
-  const p=PRESETS.find(x=>x.id===id) || PRESETS[0];
-  const root=document.documentElement.style;
-  root.setProperty('--nb', p.nb);
-  root.setProperty('--ng', p.ng);
-  root.setProperty('--np', p.np);
-  if(save){ G.preset=p.id; saveG(); }
-}
-
-// ═══════════════════════════════════════════════
-// COIN SHOP — buy/equip color presets with coins
-// ═══════════════════════════════════════════════
-function getUnlocked(){
-  try{ return JSON.parse(localStorage.getItem(pKey('unlocked'))||'["default"]'); }
-  catch(e){ return ['default']; }
-}
-function setUnlocked(arr){
-  try{ localStorage.setItem(pKey('unlocked'), JSON.stringify(arr)); }catch(e){}
-}
-
-function openShop(){
-  buildShop();
-  document.getElementById('shop-modal').classList.add('show');
-}
-function closeShop(){
-  document.getElementById('shop-modal').classList.remove('show');
-}
-
-function buildShop(){
-  const unlocked=getUnlocked();
-  const list=document.getElementById('preset-list');
-  list.innerHTML='';
-  PRESETS.forEach(p=>{
-    const isOwned=unlocked.includes(p.id);
-    const isActive=G.preset===p.id;
-    const row=document.createElement('div');
-    row.className='preset-row';
-    row.innerHTML=`
-      <div style="display:flex;align-items:center;gap:.6rem">
-        <div class="preset-swatches">
-          <span class="preset-dot" style="background:${p.nb}"></span>
-          <span class="preset-dot" style="background:${p.ng}"></span>
-          <span class="preset-dot" style="background:${p.np}"></span>
-        </div>
-        <span class="preset-name">${p.label}</span>
-      </div>
-    `;
-    const btn=document.createElement('button');
-    if(isActive){
-      btn.className='preset-btn active-preset';
-      btn.textContent='ใช้อยู่';
-      btn.disabled=true;
-    } else if(isOwned){
-      btn.className='preset-btn owned';
-      btn.textContent='สวมใส่';
-      btn.onclick=()=>{ applyPreset(p.id, true); buildShop(); };
-    } else {
-      btn.className='preset-btn locked';
-      btn.textContent=`🪙${p.cost}`;
-      btn.onclick=()=>{
-        if(spendCoins(p.cost)){
-          const u=getUnlocked(); u.push(p.id); setUnlocked(u);
-          applyPreset(p.id, true);
-          refreshGHUD();
-          buildShop();
-          sndStreak();
-        } else {
-          showFB('🪙 เหรียญไม่พอ!', false);
-        }
-      };
-    }
-    row.appendChild(btn);
-    list.appendChild(row);
-  });
-}
-
-function toggleTheme(){
-  const html=document.documentElement;
-  const next=html.getAttribute('data-theme')==='light' ? 'dark' : 'light';
-  html.setAttribute('data-theme', next);
-  localStorage.setItem('ff_theme', next);
-  document.querySelectorAll('.theme-btn').forEach(b=>b.textContent=next==='light'?'☀️':'🌙');
-  if(document.getElementById('s-select').classList.contains('active')) buildGrid();
-}
-
-function toggleSound(){
-  soundOn=!soundOn;
-  localStorage.setItem('ff_sound', soundOn?'1':'0');
-  document.querySelectorAll('.sound-btn').forEach(b=>b.textContent=soundOn?'🔊':'🔇');
-  if(soundOn) beep(660,.08);
+  try {
+    const current = JSON.parse(localStorage.getItem(pKey('detective_completed')) || '0');
+    localStorage.setItem(pKey('detective_completed'), JSON.stringify(current + 1));
+  } catch(e) {}
+  checkAllAchievements();
 }
 
 function initPrefs(){
@@ -1389,894 +2413,29 @@ function initPrefs(){
   document.querySelectorAll('.theme-btn').forEach(b=>b.textContent=theme==='light'?'☀️':'🌙');
   soundOn = localStorage.getItem('ff_sound')!=='0';
   document.querySelectorAll('.sound-btn').forEach(b=>b.textContent=soundOn?'🔊':'🔇');
-
   const profiles=getProfiles();
   const savedActive=getActiveProfile();
   const stillExists=profiles.some(p=>p.id===savedActive);
-
-  if(savedActive && stillExists){
-    enterProfile(savedActive, false);
-  } else {
-    buildProfilePicker();
-    show('s-profile');
-  }
+  if(savedActive && stillExists){ enterProfile(savedActive, false); }
+  else { buildProfilePicker(); show('s-profile'); }
 }
 window.addEventListener('DOMContentLoaded', initPrefs);
 
-// loads everything scoped to a profile id and (optionally) navigates to start
-function enterProfile(id, goToStart){
-  setActiveProfile(id);
-  loadG();
-  applyPreset(G.preset, false);
-  refreshGHUD();
-  refreshReviewBadge();
-  const prof=getProfiles().find(p=>p.id===id);
-  const nameEl=document.getElementById('active-pf-name');
-  if(nameEl) nameEl.textContent=prof ? `👤 ${prof.name}` : '';
-  if(goToStart) show('s-start');
-}
-
-// ═══════════════════════════════════════════════
-// TTS — sequential TH → EN → ZH read-aloud (Web Speech API)
-// gracefully no-ops on browsers without speechSynthesis
-// ═══════════════════════════════════════════════
-const ttsOn = !!(window.speechSynthesis && window.SpeechSynthesisUtterance);
-let ttsVoices=[];
-if(ttsOn){
-  const loadVoices=()=>{ ttsVoices=speechSynthesis.getVoices(); };
-  loadVoices();
-  speechSynthesis.onvoiceschanged=loadVoices;
-}
-function pickVoice(lang){
-  return ttsVoices.find(v=>v.lang && v.lang.toLowerCase().startsWith(lang)) || null;
-}
-function speakOne(text, lang){
-  return new Promise(resolve=>{
-    if(!ttsOn || !soundOn){ resolve(); return; }
-    try{
-      const u=new SpeechSynthesisUtterance(text);
-      u.lang=lang; u.rate=0.95; u.volume=0.85;
-      const v=pickVoice(lang);
-      if(v) u.voice=v;
-      u.onend=resolve; u.onerror=resolve;
-      speechSynthesis.speak(u);
-    }catch(e){ resolve(); }
-  });
-}
-// speaks TH then EN then ZH for a fraction family, one after another
-async function speakWord(f){
-  if(!ttsOn || !soundOn) return;
-  try{ speechSynthesis.cancel(); }catch(e){}
-  await speakOne(f.th, 'th-TH');
-  await speakOne(f.en, 'en-US');
-  await speakOne(f.zh, 'zh-CN');
-}
-function beep(freq, dur, type, vol){
-  if(!soundOn) return;
-  try{
-    if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-    if(audioCtx.state==='suspended') audioCtx.resume();
-    const t=audioCtx.currentTime;
-    const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
-    osc.type=type||'sine'; osc.frequency.setValueAtTime(freq,t);
-    gain.gain.setValueAtTime(vol||.15,t);
-    gain.gain.exponentialRampToValueAtTime(.0001,t+(dur||.15));
-    osc.connect(gain); gain.connect(audioCtx.destination);
-    osc.start(t); osc.stop(t+(dur||.15));
-  }catch(e){ /* audio unsupported — fail silent */ }
-}
-function sndCorrect(){ beep(880,.1,'sine',.14); setTimeout(()=>beep(1175,.15,'sine',.14),90); }
-function sndWrong(){ beep(180,.25,'sawtooth',.1); }
-function sndStreak(){ beep(660,.07,'sine',.12); setTimeout(()=>beep(880,.07,'sine',.12),80); setTimeout(()=>beep(1320,.18,'sine',.14),160); }
-function sndComplete(){ beep(523,.12,'sine',.13); setTimeout(()=>beep(659,.12,'sine',.13),120); setTimeout(()=>beep(784,.12,'sine',.13),240); setTimeout(()=>beep(1047,.25,'sine',.15),360); }
-
-// Pre-warm the AudioContext on the very first touch/click anywhere, so the
-// first real beep() during gameplay never has to pay AudioContext setup cost
-// (this was adding a tiny but noticeable delay to the very first tap).
-function primeAudio(){
-  try{
-    if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-    if(audioCtx.state==='suspended') audioCtx.resume();
-  }catch(e){}
-}
-document.addEventListener('pointerdown', primeAudio, {once:true});
-document.addEventListener('touchstart', primeAudio, {once:true, passive:true});
-
-// ═══════════════════════════════════════════════
-// BEST SCORE — saved locally per family + level
-// ═══════════════════════════════════════════════
-// ═══════════════════════════════════════════════
-// PROFILES — per-child save slots, no PIN, pick-by-name
-// profile list + active profile id are global; all gameplay
-// data (G state, best scores, unlocks, wrong-answer log) is
-// namespaced under the active profile id via pKey()
-// ═══════════════════════════════════════════════
-const PROFILES_KEY='ff_profiles';
-const ACTIVE_PROFILE_KEY='ff_active_profile';
-let activeProfile=null;
-
-function getProfiles(){
-  try{ return JSON.parse(localStorage.getItem(PROFILES_KEY)||'[]'); }catch(e){ return []; }
-}
-function saveProfiles(list){
-  try{ localStorage.setItem(PROFILES_KEY, JSON.stringify(list)); }catch(e){}
-}
-function getActiveProfile(){
-  return localStorage.getItem(ACTIVE_PROFILE_KEY) || null;
-}
-function setActiveProfile(id){
-  activeProfile=id;
-  try{ localStorage.setItem(ACTIVE_PROFILE_KEY, id); }catch(e){}
-}
-// prefixes any storage key with the active profile so save data never mixes
-function pKey(key){
-  return `ff_p_${activeProfile}_${key}`;
-}
-function createProfile(name){
-  const clean=name.trim().slice(0,18);
-  if(!clean) return null;
-  const list=getProfiles();
-  const id='pf_'+Date.now()+'_'+Math.floor(Math.random()*1000);
-  list.push({ id, name:clean, created:Date.now() });
-  saveProfiles(list);
-  return id;
-}
-function deleteProfile(id){
-  const list=getProfiles().filter(p=>p.id!==id);
-  saveProfiles(list);
-  // best-effort cleanup of that profile's keys (we don't know every key
-  // up front, so sweep localStorage for the prefix instead)
-  const prefix=`ff_p_${id}_`;
-  const toRemove=[];
-  for(let i=0;i<localStorage.length;i++){
-    const k=localStorage.key(i);
-    if(k && k.startsWith(prefix)) toRemove.push(k);
-  }
-  toRemove.forEach(k=>localStorage.removeItem(k));
-}
-
-function buildProfilePicker(){
-  const list=document.getElementById('profile-list');
-  const profiles=getProfiles();
-  list.innerHTML='';
-  if(profiles.length===0){
-    list.innerHTML=`<div class="hint" style="padding:.5rem 0">ยังไม่มีผู้เล่น — เพิ่มชื่อด้านล่างเพื่อเริ่มเล่น</div>`;
-  }
-  profiles.forEach(p=>{
-    const card=document.createElement('div');
-    card.className='profile-card';
-    card.innerHTML=`<span class="pf-name">👤 ${escapeHtml(p.name)}</span>`;
-    const del=document.createElement('button');
-    del.className='profile-del';
-    del.setAttribute('aria-label', `ลบผู้เล่น ${p.name}`);
-    del.textContent='✕';
-    del.onclick=(e)=>{ e.stopPropagation(); handleDeleteProfile(p.id, p.name); };
-    card.appendChild(del);
-    card.addEventListener('click', ()=>selectProfile(p.id));
-    list.appendChild(card);
-  });
-}
-
-function escapeHtml(s){
-  return s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-function handleCreateProfile(){
-  const input=document.getElementById('new-profile-name');
-  const id=createProfile(input.value);
-  if(!id){ input.focus(); return; }
-  input.value='';
-  selectProfile(id);
-}
-
-function selectProfile(id){
-  enterProfile(id, true);
-}
-
-function handleDeleteProfile(id, name){
-  if(!confirm(`ลบผู้เล่น "${name}"? คะแนนและไอเทมทั้งหมดของคนนี้จะหายไป`)) return;
-  deleteProfile(id);
-  if(getActiveProfile()===id){
-    try{ localStorage.removeItem(ACTIVE_PROFILE_KEY); }catch(e){}
-    activeProfile=null;
-  }
-  buildProfilePicker();
-}
-
-// lets a player switch profiles from the start screen without losing
-// the option to come back — goes back to the picker screen
-function switchProfile(){
-  buildProfilePicker();
-  show('s-profile');
-}
-
-
-// ═══════════════════════════════════════════════
-// BEST SCORE — saved per profile, per family + level
-// ═══════════════════════════════════════════════
-function bestKey(fi,lv){ return pKey(`best_${fi}_${lv}`); }
-function getBest(fi,lv){
-  try{ return JSON.parse(localStorage.getItem(bestKey(fi,lv))||'null'); }catch(e){ return null; }
-}
-function setBest(fi,lv,sc,acc){
-  const cur=getBest(fi,lv);
-  if(!cur || sc>cur.score){ localStorage.setItem(bestKey(fi,lv), JSON.stringify({score:sc,acc})); return true; }
-  return false;
-}
-
-// ═══════════════════════════════════════════════
-// WRONG-ANSWER LOG — per profile, feeds Review/SRS mode
-// stored as { "fi_dn": missCount } so repeat misses surface first
-// ═══════════════════════════════════════════════
-function wrongLogKey(){ return pKey('wronglog'); }
-function getWrongLog(){
-  try{ return JSON.parse(localStorage.getItem(wrongLogKey())||'{}'); }catch(e){ return {}; }
-}
-function saveWrongLog(log){
-  try{ localStorage.setItem(wrongLogKey(), JSON.stringify(log)); }catch(e){}
-}
-function markWrong(fi, dn){
-  const log=getWrongLog();
-  const k=`${fi}_${dn}`;
-  log[k]=(log[k]||0)+1;
-  saveWrongLog(log);
-}
-function clearWrongEntry(fi, dn){
-  const log=getWrongLog();
-  delete log[`${fi}_${dn}`];
-  saveWrongLog(log);
-}
-function wrongLogCount(){
-  return Object.keys(getWrongLog()).length;
-}
-
-// ═══════════════════════════════════════════════
-// REVIEW / SRS MODE
-// ═══════════════════════════════════════════════
-function refreshReviewBadge(){
-  const n=wrongLogCount();
-  const btn=document.getElementById('review-btn');
-  const badge=document.getElementById('review-badge');
-  if(btn){
-    btn.style.display = n>0 ? 'flex' : 'none';
-    if(badge) badge.textContent=String(n);
-  }
-}
-
-function startReview(){
-  const log=getWrongLog();
-  if(Object.keys(log).length===0){
-    showFB('ยังไม่มีข้อผิดสะสม!', true);
-    return;
-  }
-  // sort by miss-count desc so hardest problems surface first
-  const entries=Object.entries(log).sort((a,b)=>b[1]-a[1]);
-  // build reviewQueue: [{fi, dn}...] capped at 20 items per session
-  reviewQueue=entries.slice(0,20).map(([k])=>{
-    const [fi,dn]=k.split('_');
-    return { fi:parseInt(fi,10), dn:parseInt(dn,10) };
-  });
-  reviewMode=true;
-
-  // reuse the existing game engine — run the first item to determine
-  // which family to "own" the session (we use the most-missed one)
-  const dominantFi=reviewQueue[0].fi;
-  sF=dominantFi; sL=0;
-  const f=FAM[dominantFi];
-  // override denoms with the review queue's denominators for this family,
-  // mixed from all families — we handle family-switching per question in loadQ
-  denoms=reviewQueue.map(q=>q.dn);
-  score=0; streak=0; bestStreak=0; nCorrect=0; total=denoms.length;
-  qIdx=0; locked=false;
-
-  const hs=document.getElementById('hud-sym');
-  hs.textContent='📚'; hs.style.color=f.color; hs.style.textShadow=`0 0 12px ${f.color}`;
-  document.getElementById('hud-name').textContent='REVIEW MODE';
-  document.getElementById('sc-val').textContent='0';
-  document.getElementById('streak').className='';
-  document.getElementById('feedback').className='';
-  document.getElementById('cam-st').textContent=arOn?'🤲 AR mode':'👆 แตะปุ่มคำตอบ';
-  document.getElementById('cam-st').classList.remove('warn');
-
-  speakWord(f);
-  show('s-game');
-  loadQ();
-}
-
-
-// ═══════════════════════════════════════════════
-// SCREEN HELPER
-// ═══════════════════════════════════════════════
-function show(id){
-  document.querySelectorAll('.screen').forEach(s=>{
-    s.classList.toggle('active', s.id===id);
-  });
-  // scroll to top on screen change
-  const el=document.getElementById(id);
-  if(el) el.scrollTop=0;
-}
-function goStart(){ stopAR(); show('s-start'); }
-function goSelect(){ stopAR(); reviewMode=false; buildGrid(); refreshReviewBadge(); show('s-select'); }
-function retryGame(){
-  reviewMode=false;
-  startGame(sF, sL);
-}
-
-// ═══════════════════════════════════════════════
-// SELECT SCREEN
-// ═══════════════════════════════════════════════
-function buildGrid(){
-  const g=document.getElementById('fam-grid');
-  g.innerHTML='';
-  FAM.forEach((f,i)=>{
-    const c=fcolor(f);
-    const best=getBest(i,sL);
-    const card=document.createElement('div');
-    card.className='fam-card'+(i===sF?' picked':'');
-    card.style.setProperty('--fc', c);
-    card.style.borderColor=c+'44';
-    if(i===sF) card.style.boxShadow=`0 0 20px ${c}55`;
-
-    card.innerHTML=`
-      <span class="fc-sym" style="color:${c};text-shadow:0 0 12px ${c}">${fracHTML(f)}</span>
-      <div class="fc-name" style="color:${c}">${f.name}</div>
-      <div class="fc-desc">${f.instr}</div>
-      <div class="fc-best">${best ? '🏆 ดีที่สุด: '+best.score : ''}</div>
-    `;
-
-    const btn=document.createElement('button');
-    btn.className='btn-start';
-    btn.textContent='▶ START';
-    btn.style.borderColor=c;
-    btn.style.color=c;
-    btn.setAttribute('aria-label', `เริ่มเล่น ${f.name}`);
-    // use touchstart + click for fastest response on mobile
-    btn.addEventListener('click', e=>{ e.stopPropagation(); startGame(i, sL); });
-    card.appendChild(btn);
-
-    card.addEventListener('click', ()=>{
-      sF=i;
-      document.querySelectorAll('.fam-card').forEach(cd=>{
-        cd.classList.remove('picked'); cd.style.boxShadow='';
-      });
-      card.classList.add('picked');
-      card.style.boxShadow=`0 0 20px ${c}55`;
-    });
-    g.appendChild(card);
-  });
-}
-
-function pickLv(l){
-  sL=l;
-  ['lb0','lb1','lb2'].forEach((id,i)=>{
-    document.getElementById(id).classList.toggle('sel', i===l);
-  });
-  buildGrid();
-}
-
-// ═══════════════════════════════════════════════
-// GAME
-// ═══════════════════════════════════════════════
-function startGame(fi, lv){
-  sF=fi; sL=lv;
-  const f=FAM[fi];
-  denoms=[...f.lv[lv]];
-  score=0; streak=0; bestStreak=0; nCorrect=0; total=denoms.length;
-  qIdx=0; locked=false;
-
-  const hs=document.getElementById('hud-sym');
-  hs.innerHTML=fracInline(f); hs.style.color=fcolor(f); hs.style.textShadow=`0 0 12px ${fcolor(f)}`;
-  document.getElementById('hud-name').textContent=f.name;
-  document.getElementById('sc-val').textContent='0';
-  document.getElementById('streak').className='';
-  document.getElementById('feedback').className='';
-  document.getElementById('cam-st').textContent=arOn?'🤲 AR mode':'👆 แตะปุ่มคำตอบ';
-  document.getElementById('cam-st').classList.remove('warn');
-
-  speakWord(f);
-  show('s-game');
-  loadQ();
-}
-
-function loadQ(){
-  if(qIdx>=total){ endGame(); return; }
-  locked=false;
-  // in review mode each question may belong to a different family
-  const activeFi = reviewMode ? reviewQueue[qIdx].fi : sF;
-  const f=FAM[activeFi], dn=denoms[qIdx];
-  const ans=Math.round(dn*f.n/f.d);
-
-  document.getElementById('q-instr').textContent=f.instr;
-  const qExpr=document.getElementById('q-expr');
-  qExpr.innerHTML=
-    `<span style="color:${fcolor(f)}">${fracHTML(f)}</span> &times; <span style="color:var(--ny)">${dn}</span> = <span style="color:var(--tp)">?</span>`;
-  qExpr.setAttribute('aria-label', `${f.th} คูณ ${dn} เท่ากับเท่าไหร่`);
-  document.getElementById('q-sub').textContent=`${f.sym} = ${f.n}/${f.d}  ×  ${dn} ÷ ${f.d} = ?`;
-  document.getElementById('hud-qn').textContent=`Q ${qIdx+1}/${total}`;
-  document.getElementById('pb-f').style.width=`${(qIdx/total)*100}%`;
-  // update hud symbol to match current question's family in review mode
-  if(reviewMode){
-    const hs=document.getElementById('hud-sym');
-    hs.innerHTML=fracInline(f); hs.style.color=fcolor(f); hs.style.textShadow=`0 0 12px ${fcolor(f)}`;
-  }
-  renderAnswers(ans, f);
-}
-
-function renderAnswers(ans, f){
-  const area=document.getElementById('ans-area');
-  area.innerHTML='';
-  const pool=new Set();
-  while(pool.size<3){
-    const off=(Math.floor(Math.random()*5)+1)*(Math.random()<.5?1:-1);
-    const w=ans+off;
-    if(w>0 && w!==ans) pool.add(w);
-  }
-  const opts=[ans,...pool].sort(()=>Math.random()-.5);
-  opts.forEach(v=>{
-    const btn=document.createElement('button');
-    btn.className='ans-btn';
-    btn.textContent=v;
-    btn.setAttribute('aria-label', `คำตอบ ${v}`);
-    // use both touchend and click for maximum compatibility
-    btn.addEventListener('click', ()=>onAnswer(btn, v===ans, f));
-    area.appendChild(btn);
-  });
-}
-
-function onAnswer(btn, isRight, f){
-  if(locked) return;
-  locked=true;
-  const color=fcolor(f);
-  const activeFi = reviewMode ? reviewQueue[qIdx].fi : sF;
-  document.querySelectorAll('.ans-btn').forEach(b=>b.disabled=true);
-
-  if(isRight){
-    btn.classList.add('correct-flash');
-    btn.style.borderColor=color; btn.style.color=color;
-    btn.style.boxShadow=`0 0 34px ${color}99`;
-    const gain=100+streak*10;
-    score+=gain; nCorrect++; streak++;
-    bestStreak=Math.max(bestStreak,streak);
-    document.getElementById('sc-val').textContent=score;
-    const coinsEarned=addCoins(gain);
-    const leveledUp=addXP(Math.round(gain/4));
-    refreshGHUD();
-    clearWrongEntry(activeFi, denoms[qIdx]);
-    refreshReviewBadge();
-    showFB('✓ CORRECT!', true);
-    sndCorrect();
-    speakWord(f);
-    if(leveledUp){
-      setTimeout(()=>{ showFB(`⬆ LEVEL UP! LV ${G.level}`, true); sndStreak(); }, 650);
-    }
-    if(streak>=3){
-      const el=document.getElementById('streak');
-      el.textContent=`🔥 STREAK ×${streak}`;
-      el.className='show';
-      sndStreak();
-    }
-    boom(window.innerWidth/2, window.innerHeight*.45, color);
-    setTimeout(()=>{ qIdx++; loadQ(); }, leveledUp ? 1200 : 600);
-  } else {
-    btn.classList.add('wrong-flash');
-    streak=0; document.getElementById('streak').className='';
-    showFB('✗ ลองใหม่!', false);
-    sndWrong();
-    markWrong(activeFi, denoms[qIdx]);
-    refreshReviewBadge();
-    setTimeout(()=>{
-      document.querySelectorAll('.ans-btn').forEach(b=>{
-        b.disabled=false;
-        b.classList.remove('wrong-flash','correct-flash');
-      });
-      locked=false;
-    }, 550);
-  }
-}
-
-function showFB(msg, ok){
-  const el=document.getElementById('feedback');
-  el.textContent=msg; el.className=ok?'show-ok':'show-no';
-  clearTimeout(fbTimer);
-  fbTimer=setTimeout(()=>{ el.className=''; }, 700);
-}
-
-// ═══════════════════════════════════════════════
-// END GAME
-// ═══════════════════════════════════════════════
-// ═══════════════════════════════════════════════
-// EXPORT / SHARE — draws a branded result card to canvas, downloads as PNG
-// ═══════════════════════════════════════════════
-// draws a numerator/bar/denominator fraction on <canvas>, mirroring the
-// .frac DOM component so the shared image matches what's on-screen
-function drawFracCanvas(c, f, cx, cy, size, color){
-  c.save();
-  c.textAlign='center';
-  c.textBaseline='alphabetic';
-  c.fillStyle=color;
-  c.font=`900 ${size}px Orbitron`;
-  const gap=size*.12, barW=size*1.1, barH=Math.max(4,size*.07);
-  c.fillText(String(f.n), cx, cy-gap);
-  c.fillRect(cx-barW/2, cy-barH/2, barW, barH);
-  c.fillText(String(f.d), cx, cy+gap+size*.78);
-  c.restore();
-}
-
-async function shareResultCard(){
-  const f=FAM[sF];
-  const acc=total>0 ? Math.round((nCorrect/total)*100) : 0;
-  const W=900, H=1200;
-  const cv=document.createElement('canvas');
-  cv.width=W; cv.height=H;
-  const c=cv.getContext('2d');
-
-  // wait for the brand fonts to actually be ready before drawing text —
-  // canvas does not retroactively re-render once a web font finishes
-  // loading the way DOM text does, so without this the card can silently
-  // fall back to the system default font on a cold cache
-  try{ await document.fonts.ready; }catch(e){ /* fonts API unsupported — draw with whatever is available */ }
-
-  // background
-  const bgGrad=c.createLinearGradient(0,0,0,H);
-  bgGrad.addColorStop(0,'#050A14'); bgGrad.addColorStop(1,'#0A1428');
-  c.fillStyle=bgGrad; c.fillRect(0,0,W,H);
-
-  // faint grid, matching app's bg pattern
-  c.strokeStyle='rgba(0,207,255,0.06)'; c.lineWidth=1;
-  for(let x=0;x<W;x+=45){ c.beginPath(); c.moveTo(x,0); c.lineTo(x,H); c.stroke(); }
-  for(let y=0;y<H;y+=45){ c.beginPath(); c.moveTo(0,y); c.lineTo(W,y); c.stroke(); }
-
-  // badge — brand tag, Orbitron per the UI's display-font spec
-  c.textAlign='center';
-  c.font='700 22px Orbitron';
-  c.fillStyle='#FF6BF8';
-  c.fillText('3LANG SMART KIDS · BUILD NOT BORN', W/2, 90);
-
-  // title
-  c.font='900 64px Orbitron';
-  const titleGrad=c.createLinearGradient(W*0.2,0,W*0.8,0);
-  titleGrad.addColorStop(0,'#00CFFF'); titleGrad.addColorStop(0.5,'#FF6BF8'); titleGrad.addColorStop(1,'#FFE600');
-  c.fillStyle=titleGrad;
-  c.fillText('FRACTION FAMILY', W/2, 175);
-
-  // result headline
-  c.font='900 44px Orbitron';
-  c.fillStyle=nCorrect===total ? '#39FF14' : '#00CFFF';
-  c.fillText(nCorrect===total ? '✦ PERFECT! ✦' : '✦ COMPLETE! ✦', W/2, 250);
-
-  // family fraction — drawn as a real numerator/bar/denominator instead
-  // of the precomposed Unicode glyph (Arial has no guaranteed ½⅓¼⅕
-  // coverage, so this used to silently tofu-box or substitute fonts)
-  const famColor=isLight()? f.colorLight : f.color;
-  drawFracCanvas(c, f, W/2, 355, 70, famColor);
-
-  // family name — Thai body copy uses Kanit, not the Latin-only display font
-  c.font='700 28px Kanit';
-  c.fillStyle='#E8F4FF';
-  c.fillText(f.name.replace(f.sym,'').trim(), W/2, 465);
-
-  // score
-  c.font='900 130px Orbitron';
-  c.fillStyle='#FFE600';
-  c.fillText(String(score), W/2, 630);
-  c.font='400 24px "Share Tech Mono"';
-  c.fillStyle='#7AAABE';
-  c.fillText('SCORE', W/2, 670);
-
-  // stat row
-  const stats=[
-    [`${nCorrect}/${total}`, 'CORRECT'],
-    [String(bestStreak), 'BEST STREAK'],
-    [acc+'%', 'ACCURACY']
-  ];
-  const colW=W/3;
-  stats.forEach((s,i)=>{
-    const cx=colW*i+colW/2;
-    c.font='700 40px Orbitron'; c.fillStyle='#00CFFF';
-    c.fillText(s[0], cx, 760);
-    c.font='400 18px "Share Tech Mono"'; c.fillStyle='#3A5A70';
-    c.fillText(s[1], cx, 795);
-  });
-
-  // level/coins footer strip
-  c.font='400 26px "Share Tech Mono"'; c.fillStyle='#E8F4FF';
-  c.fillText(`LV ${G.level}  ·  🪙 ${G.coins}`, W/2, 900);
-
-  // tagline + credit — Thai, Kanit
-  c.font='600 22px Kanit'; c.fillStyle='#7AAABE';
-  c.fillText('เก่งเลข · เก่งโลก · เก่งภาษา', W/2, 1080);
-  c.font='400 16px Kanit'; c.fillStyle='#3A5A70';
-  c.fillText('พ่อสม × ฟ้าลั่น × ฟ้ารุ้ง', W/2, 1140);
-
-  cv.toBlob(blob=>{
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');
-    a.href=url;
-    // derive filename straight from the denominator instead of matching
-    // against literal glyph strings, so this keeps working if more
-    // fraction families (sixths, sevenths…) are added later
-    const denomWord={2:'half',3:'third',4:'quarter',5:'fifth'}[f.d] || `${f.d}ths`;
-    a.download=`fraction-family_${denomWord}_${score}.png`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(()=>URL.revokeObjectURL(url), 2000);
-  }, 'image/png');
-}
-
-
-function endGame(){
-  stopAR();
-  const acc=Math.round((nCorrect/total)*100);
-  const isNew= reviewMode ? false : setBest(sF, sL, score, acc);
-  if(!reviewMode && nCorrect===total){ addCoins(50); }
-  refreshGHUD();
-  document.getElementById('res-ttl').textContent=
-    reviewMode ? '📚 REVIEW COMPLETE!' :
-    (nCorrect===total ? '✦ PERFECT! ✦' : '✦ COMPLETE! ✦');
-  document.getElementById('res-score').textContent=score;
-  document.getElementById('rs-c').textContent=`${nCorrect}/${total}`;
-  document.getElementById('rs-b').textContent=bestStreak;
-  document.getElementById('rs-a').textContent=acc+'%';
-  const rb=document.getElementById('res-best');
-  if(reviewMode){
-    const remaining=wrongLogCount();
-    rb.textContent=remaining>0 ? `📚 ยังเหลือข้อผิด ${remaining} ข้อ` : '✅ ทบทวนครบแล้ว!';
-    rb.className='old';
-  } else if(isNew){
-    rb.textContent='🏆 NEW BEST!'; rb.className='new';
-  } else {
-    const best=getBest(sF, sL);
-    rb.textContent=best ? `ดีที่สุด: ${best.score}` : '';
-    rb.className='old';
-  }
-  reviewMode=false;
-  show('s-result');
-  sndComplete();
-  boom(window.innerWidth/2, window.innerHeight/2, '#FFE600', 70);
-}
-
-// ═══════════════════════════════════════════════
-// PARTICLES
-// ═══════════════════════════════════════════════
-const pCv=document.getElementById('p-canvas');
-const pCtx=pCv.getContext('2d');
-let particles=[];
-function resizeP(){
-  pCv.width=window.innerWidth; pCv.height=window.innerHeight;
-}
-window.addEventListener('resize', resizeP);
-resizeP();
-
-function boom(x,y,color,n=20){
-  for(let i=0;i<n;i++){
-    const a=Math.random()*Math.PI*2, sp=2+Math.random()*7;
-    particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-2.5,
-      r:2+Math.random()*4,life:1,dec:.018+Math.random()*.02,color});
-  }
-}
-function tickP(){
-  pCtx.clearRect(0,0,pCv.width,pCv.height);
-  particles=particles.filter(p=>p.life>0);
-  particles.forEach(p=>{
-    p.x+=p.vx; p.y+=p.vy; p.vy+=.13; p.life-=p.dec;
-    pCtx.save(); pCtx.globalAlpha=p.life;
-    pCtx.beginPath(); pCtx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    pCtx.fillStyle=p.color; pCtx.shadowColor=p.color; pCtx.shadowBlur=8;
-    pCtx.fill(); pCtx.restore();
-  });
-  requestAnimationFrame(tickP);
-}
-tickP();
-
-// ═══════════════════════════════════════════════
-// AR — lazy load, optional
-// ═══════════════════════════════════════════════
-function toggleAR(){
-  if(arOn) stopAR(); else openAR();
-}
-
-function openAR(){
-  // [1] HTTPS / file:// check
-  const ctxErr=insecureContextReason();
-  if(ctxErr){ setCamStatus(ctxErr, true); return; }
-
-  // [2] In-App Browser check (LINE / Facebook / Instagram / TikTok)
-  const ua=navigator.userAgent||'';
-  if(/FBAN|FBAV|FB_IAB|Line\/|Instagram|Musical\.ly|TikTok/.test(ua)){
-    setCamStatus('❌ Browser ใน App นี้ใช้กล้องไม่ได้ — กรุณาเปิดลิงก์ใน Safari (iOS) หรือ Chrome (Android) แทนครับ', true);
-    return;
-  }
-
-  // [3] mediaDevices API support check
-  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
-    setCamStatus('❌ Browser นี้ไม่รองรับกล้อง — ลองอัปเดต Browser หรือแตะปุ่มคำตอบเล่นต่อได้เลย', true);
-    return;
-  }
-
-  document.getElementById('cam-st').textContent='⏳ กำลังโหลด AR...';
-  document.getElementById('cam-st').classList.remove('warn');
-  if(!mpLoaded){
-    loadScript('https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js', ()=>{
-      loadScript('https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js', ()=>{
-        mpLoaded=true; startAR();
-      }, arLoadErr);
-    }, arLoadErr);
-  } else { startAR(); }
-}
-
-// returns a Thai message if the page is running somewhere getUserMedia is
-// blocked outright (not a permission problem, a hosting problem), else null
-function insecureContextReason(){
-  if(window.isSecureContext===false){
-    if(location.protocol==='file:'){
-      return '❌ เปิดจากไฟล์ในเครื่อง (file://) กล้องใช้ไม่ได้ — ต้องเปิดผ่านลิงก์ https:// เท่านั้น แตะปุ่มคำตอบเล่นต่อได้เลย';
-    }
-    return '❌ หน้านี้ไม่ปลอดภัย (ต้องเป็น https://) กล้องจึงถูกบล็อก — แตะปุ่มคำตอบเล่นต่อได้เลย';
-  }
-  return null;
-}
-
-function setCamStatus(msg, isWarn){
-  const el=document.getElementById('cam-st');
-  el.textContent=msg;
-  el.classList.toggle('warn', !!isWarn);
-}
-
-function loadScript(src, onok, onerr){
-  const s=document.createElement('script');
-  const timer=setTimeout(()=>{ s.onload=s.onerror=null; onerr(new Error('timeout')); }, 8000);
-  s.src=src; s.crossOrigin='anonymous';
-  s.onload=()=>{ clearTimeout(timer); onok(); };
-  s.onerror=()=>{ clearTimeout(timer); onerr(); };
-  document.head.appendChild(s);
-}
-function arLoadErr(){ setCamStatus('❌ โหลดสคริปต์ AR ไม่ได้ (เน็ตหลุด/บล็อก CDN) — ใช้ปุ่มแทน', true); }
-
-function startAR(){
-  // belt-and-suspenders: re-check here too, in case startAR() is ever
-  // called directly without going through openAR()'s pre-check
-  const ctxErr=insecureContextReason();
-  if(ctxErr){ setCamStatus(ctxErr, true); return; }
-
-  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
-    setCamStatus('❌ เบราว์เซอร์รุ่นนี้ไม่รองรับกล้อง — ลองอัปเดตเบราว์เซอร์ หรือแตะปุ่มคำตอบแทน', true);
-    return;
-  }
-  const tryCamera=(constraints)=>navigator.mediaDevices.getUserMedia(constraints);
-  tryCamera({video:{facingMode:{ideal:'user'}},audio:false})
-    .catch(()=>tryCamera({video:true,audio:false}))
-    .then(stream=>{
-      const vid=document.getElementById('webcam');
-      vid.srcObject=stream; vid.play();
-      vid.classList.add('live');
-      arOn=true;
-      setCamStatus('🤲 AR — จีบนิ้วตอบได้', false);
-      document.getElementById('ar-toggle').textContent='📷 ปิดกล้อง';
-      setupHandCanvas();
-      startHandTracking(vid);
-      // handle camera being revoked/disconnected mid-session
-      stream.getVideoTracks()[0].addEventListener('ended', ()=>{
-        if(arOn){ stopAR(); setCamStatus('❌ กล้องถูกปิด — แตะปุ่มคำตอบแทน', true); }
-      });
-    })
-    .catch(err=>{
-      console.warn('camera', err);
-      setCamStatus(cameraErrorMessage(err), true);
-    });
-}
-
-// translate the raw getUserMedia error into the actual cause, in Thai,
-// instead of a single generic "permission denied" message for everything
-function cameraErrorMessage(err){
-  switch(err && err.name){
-    case 'NotAllowedError':
-      return '❌ ไม่ได้รับอนุญาตใช้กล้อง — เช็คสิทธิ์กล้องในตั้งค่าเบราว์เซอร์/ระบบ แล้วลองใหม่ หรือแตะปุ่มคำตอบเล่นต่อได้';
-    case 'NotFoundError':
-      return '❌ ไม่พบกล้องในอุปกรณ์นี้ — แตะปุ่มคำตอบเล่นต่อได้เลย';
-    case 'NotReadableError':
-      return '❌ แอปอื่นกำลังใช้กล้องอยู่ — ปิดแอปนั้นแล้วลองใหม่ หรือแตะปุ่มคำตอบแทน';
-    case 'OverconstrainedError':
-      return '❌ กล้องตัวนี้ไม่รองรับโหมดที่ขอ — แตะปุ่มคำตอบเล่นต่อได้เลย';
-    case 'SecurityError':
-      return '❌ หน้านี้ไม่ปลอดภัย (ต้องเป็น https://) กล้องจึงถูกบล็อก — แตะปุ่มคำตอบเล่นต่อได้เลย';
-    case 'AbortError':
-      return '❌ เปิดกล้องไม่สำเร็จกะทันหัน — ลองแตะปุ่มเปิดกล้องอีกครั้ง';
-    default:
-      return '❌ เปิดกล้องไม่สำเร็จ — แตะปุ่มคำตอบเล่นต่อได้เลย';
-  }
-}
-
-function stopAR(){
-  if(mpCam){ try{mpCam.stop();}catch(e){} mpCam=null; }
-  if(mpH){ try{mpH.close();}catch(e){} mpH=null; }
-  const vid=document.getElementById('webcam');
-  if(vid.srcObject){ vid.srcObject.getTracks().forEach(t=>t.stop()); vid.srcObject=null; }
-  vid.classList.remove('live');
-  arOn=false;
-  document.getElementById('ar-toggle').textContent='📷 เปิดกล้อง AR';
-  setCamStatus('👆 แตะปุ่มคำตอบ', false);
-  const cv=document.getElementById('hand-canvas');
-  cv.getContext('2d').clearRect(0,0,cv.width,cv.height);
-}
-
-function setupHandCanvas(){
-  const cv=document.getElementById('hand-canvas');
-  cv.width=window.innerWidth; cv.height=window.innerHeight;
-}
-
-// pinch → click nearest button
-let wasPinch=false;
-function startHandTracking(vid){
-  mpH=new Hands({locateFile:f=>`https://cdn.jsdelivr.net/npm/@mediapipe/hands/${f}`});
-  mpH.setOptions({maxNumHands:1,modelComplexity:1,minDetectionConfidence:.6,minTrackingConfidence:.4});
-  mpH.onResults(onHands);
-  mpCam=new Camera(vid,{
-    onFrame:async()=>{ if(mpH) await mpH.send({image:vid}); },
-    width:640, height:480
-  });
-  mpCam.start();
-}
-
-function onHands(r){
-  const cv=document.getElementById('hand-canvas');
-  const c=cv.getContext('2d');
-  c.clearRect(0,0,cv.width,cv.height);
-  if(!r.multiHandLandmarks||!r.multiHandLandmarks.length){ wasPinch=false; return; }
-  const lm=r.multiHandLandmarks[0];
-  const W=cv.width, H=cv.height;
-  drawSkeleton(c, lm, W, H);
-  const ix=(1-lm[8].x)*W, iy=lm[8].y*H;
-  const dx=(1-lm[4].x)*W-ix, dy=lm[4].y*H-iy;
-  const isPinch=Math.sqrt(dx*dx+dy*dy)<W*.075;
-  // cursor
-  c.save();
-  c.beginPath(); c.arc(ix,iy,18,0,Math.PI*2);
-  c.strokeStyle=isPinch?'#39FF14':'#00CFFF';
-  c.lineWidth=2.5; c.shadowColor=isPinch?'#39FF14':'#00CFFF'; c.shadowBlur=12; c.stroke();
-  c.beginPath(); c.arc(ix,iy,5,0,Math.PI*2);
-  c.fillStyle=isPinch?'#39FF14':'#00CFFF'; c.fill();
-  c.restore();
-  // pinch release → click nearest
-  if(!isPinch && wasPinch) clickNearest(ix, iy);
-  wasPinch=isPinch;
-}
-
-function clickNearest(px, py){
-  let best=null, bestD=Infinity;
-  document.querySelectorAll('.ans-btn:not([disabled])').forEach(btn=>{
-    const r=btn.getBoundingClientRect();
-    const bx=r.left+r.width/2, by=r.top+r.height/2;
-    const d=Math.sqrt((px-bx)**2+(py-by)**2);
-    if(d<bestD){ bestD=d; best=btn; }
-  });
-  if(best && bestD<150) best.click();
-}
-
-function drawSkeleton(c, lm, W, H){
-  const CONN=[[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],
-              [0,9],[9,10],[10,11],[11,12],[0,13],[13,14],[14,15],[15,16],
-              [0,17],[17,18],[18,19],[19,20],[5,9],[9,13],[13,17]];
-  c.save();
-  c.strokeStyle='rgba(57,255,20,.5)'; c.lineWidth=1.5;
-  c.shadowColor='#39FF14'; c.shadowBlur=5;
-  CONN.forEach(([a,b])=>{
-    const p=lm[a],q=lm[b];
-    c.beginPath(); c.moveTo((1-p.x)*W,p.y*H); c.lineTo((1-q.x)*W,q.y*H); c.stroke();
-  });
-  lm.forEach(p=>{ c.beginPath(); c.arc((1-p.x)*W,p.y*H,3,0,Math.PI*2); c.fillStyle='#39FF14'; c.fill(); });
-  c.restore();
-}
-
-// ═══════════════════════════════════════════════
-// BATTERY / PRIVACY: auto-pause camera when app is backgrounded
-// ═══════════════════════════════════════════════
-document.addEventListener('visibilitychange', ()=>{
-  if(document.hidden && arOn){
-    stopAR();
-    setCamStatus('⏸ ปิดกล้องอัตโนมัติ (สลับแอป) — แตะเพื่อเปิดใหม่', true);
-  }
+// ── COPYRIGHT RUNTIME STAMP ──
+console.log(
+  '%c© 2025 3LANG SMART KIDS · SOM-Interpreter · Built Not Born\n' +
+  '%cสงวนลิขสิทธิ์ตาม พ.ร.บ. ลิขสิทธิ์ พ.ศ. 2537\n' +
+  'All rights reserved. Unauthorized reproduction is prohibited.',
+  'color:#00e5ff;font-size:14px;font-weight:bold;',
+  'color:#b6ff00;font-size:11px;'
+);
+Object.defineProperty(window,'__3LANG_COPYRIGHT__',{
+  value:'© 2025 สมชาย ศรีเนตร · 3LANG SMART KIDS · BNB Architecture v1.0',
+  writable:false, enumerable:true, configurable:false
 });
+</script>
+</body>
+</html>
 
 // ── COPYRIGHT RUNTIME STAMP ──────────────────────────────────
 // This stamp fires every time the app loads — visible in DevTools console
